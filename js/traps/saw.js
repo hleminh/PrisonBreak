@@ -10,7 +10,6 @@ class Saw {
     this.DIRECT;
     this.y1 = y1;
     this.y2 = y2;
-    this.sprite.body.clearCollision(true);
   }
 
   update() {
