@@ -8,9 +8,12 @@ var stage1State = {
     map = this.game.add.tilemap('stage1');
     map.addTilesetImage('tiles', 'tiles');
 
-    layer = map.createLayer('Tile Layer 1', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
-    layer.resizeWorld();
-    layer.wrap = false;
+    layer1 = map.createLayer('Tile Layer 1', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
+    layer1.resizeWorld();
+    layer1.wrap = false;
+    layer2 = map.createLayer('Tile Layer 2', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
+    layer2.resizeWorld();
+    layer2.wrap = false;
     var player = new Player(100, 100, {
       up: Phaser.Keyboard.UP,
       down: Phaser.Keyboard.DOWN,
