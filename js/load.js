@@ -21,8 +21,6 @@ var loadState = {
     PrisonBreak.game.load.image('saw5', 'assets/saws/saw_5.png');
     PrisonBreak.game.load.image('saw6', 'assets/saws/saw_6.png');
 
-    PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup();
-    PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup();
   },
 
   create: function() {

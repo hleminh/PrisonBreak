@@ -2,6 +2,7 @@ class Player {
   constructor(x, y, configs) {
     this.configs = configs;
     this.sprite = PrisonBreak.playerGroup.create(x, y, 'player');
+    this.sprite.body.collideWorldBounds = true;
     this.sprite.update = this.update.bind(this);
     this.sprite.body.collideWorldBounds = true;
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
