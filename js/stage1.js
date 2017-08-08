@@ -32,10 +32,15 @@ var stage1State = {
       player_speed: 180
     });
 
-    var saw = new Saw(215, 190, 'saw1', true);
-    var saw = new Saw(311, 190, 'saw1', false);
-    var saw = new Saw(407, 190, 'saw1', true);
-    var saw = new Saw(503, 190, 'saw1', false);
+    PrisonBreak.saw = [];
+    PrisonBreak.saw.push( new Saw(168, 120, 'saw1', 120, 268));
+    PrisonBreak.saw.push( new Saw(264, 120, 'saw1', 120, 268));
+    PrisonBreak.saw.push( new Saw(360, 120, 'saw1', 120, 268));
+    PrisonBreak.saw.push( new Saw(456, 120, 'saw1', 120, 268));
+    PrisonBreak.saw.push( new Saw(216, 264, 'saw1', 120, 268));
+    PrisonBreak.saw.push( new Saw(312, 264, 'saw1', 120, 268));
+    PrisonBreak.saw.push( new Saw(408, 264, 'saw1', 120, 268));
+    PrisonBreak.saw.push( new Saw(504, 264, 'saw1', 120, 268));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
