@@ -10,6 +10,7 @@ class Saw {
     this.DIRECT;
     this.y1 = y1;
     this.y2 = y2;
+    this.sprite.body.setCircle(24);
   }
 
   update() {
