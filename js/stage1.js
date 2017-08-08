@@ -7,7 +7,6 @@ var stage1State = {
     PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
-    PrisonBreak.wallGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
 
     map = this.game.add.tilemap('stage1');
     map.addTilesetImage('tiles', 'tiles');
@@ -17,11 +16,9 @@ var stage1State = {
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
 
-    groundLayer.resizeWorld();
+    // groundLayer.resizeWorld();
 
     PrisonBreak.game.physics.p2.setBoundsToWorld(true, true, true, true, false);
-
-
 
     var player = new Player(100, 200, {
       up: Phaser.Keyboard.UP,
@@ -30,6 +27,14 @@ var stage1State = {
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
     });
+
+    var saw = new Saw(100, 200, {
+      up: Phaser.Keyboard.W,
+      down: Phaser.Keyboard.S,
+      left: Phaser.Keyboard.A,
+      right: Phaser.Keyboard.D,
+      player_speed: 180
+    }, 'saw1');
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
