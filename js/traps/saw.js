@@ -10,15 +10,15 @@ class Saw {
     this.DIRECT;
     this.y1 = y1;
     this.y2 = y2;
-    this.sprite.body.setCircle(24);
+    this.sprite.body.setCircle(this.sprite.width / 2);
   }
 
   update() {
     this.sprite.body.rotation += 30;
-    if(this.sprite.y < this.y1) this.DIRECT = false;
-    if(this.sprite.y > this.y2) this.DIRECT = true;
+    if (this.sprite.y < this.y1) this.DIRECT = false;
+    if (this.sprite.y > this.y2) this.DIRECT = true;
 
-    if(this.DIRECT) this.sprite.body.velocity.y = -this.SAW_SPEED;
-    else            this.sprite.body.velocity.y =  this.SAW_SPEED;
+    if (this.DIRECT) this.sprite.body.velocity.y = -this.SAW_SPEED;
+    else this.sprite.body.velocity.y = this.SAW_SPEED;
   }
 }
