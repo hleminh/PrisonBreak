@@ -13,7 +13,7 @@ var stage1State = {
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
 
-    PrisonBreak.game.physics.p2.updateBoundsCollisionGroup();
+    // PrisonBreak.game.physics.p2.updateBoundsCollisionGroup();
 
     map = this.game.add.tilemap('stage1');
     map.addTilesetImage('tiles', 'tiles');
