@@ -62,7 +62,7 @@ var stage1State = {
           this.player.sprite.body.x = this.startingX;
           this.player.sprite.body.y = this.startingY;
         }
-        if (body.data.world.bodies[20].id == body.data.id || body.data.world.bodies[19].id == body.data.id) {
+        if (body.data.id == 33) {
           console.log("Hit end");
           PrisonBreak.game.state.start('win');
         }
@@ -70,6 +70,31 @@ var stage1State = {
     }
 
     this.player.sprite.body.onBeginContact.add(playerContact, this);
+
+    pause_label = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 100, 20, 'Pause',{
+      font: '24px Arial',
+      fill: '#fff'
+    });
+    pause_label.inputEnabled = true;
+    pause_label.events.onInputUp.add(function(){
+      PrisonBreak.game.paused = true;
+      clickToContinue = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH/2, PrisonBreak.configs.GAME_HEIGHT-150,
+        'Click Any Where to Continue',
+        {font: '30px Arial', fill: '#fff'}
+      );
+      clickToContinue.anchor.setTo(0.5, 0.5);
+
+    });
+    PrisonBreak.game.input.onDown.add(unpause, self);
+
+    function unpause(event){
+      if(PrisonBreak.game.paused){
+        if(0<event.x<PrisonBreak.configs.GAME_WIDTH && 0<event.y<PrisonBreak.configs.GAME_HEIGHT){
+          clickToContinue.destroy();
+          PrisonBreak.game.paused = false;
+        }
+      }
+    }
 
   },
   render() {
