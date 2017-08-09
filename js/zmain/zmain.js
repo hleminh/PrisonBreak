@@ -10,6 +10,7 @@ PrisonBreak.game.state.add('boot', bootState);
 PrisonBreak.game.state.add('load', loadState);
 PrisonBreak.game.state.add('menu', menuState);
 PrisonBreak.game.state.add('stage1', stage1State);
+PrisonBreak.game.state.add('stage2', stage2State);
 PrisonBreak.game.state.add('win', winState);
 
 PrisonBreak.game.state.start('boot');
