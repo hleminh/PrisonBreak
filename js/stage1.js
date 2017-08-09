@@ -62,7 +62,7 @@ var stage1State = {
           this.player.sprite.body.x = this.startingX;
           this.player.sprite.body.y = this.startingY;
         }
-        if (body.data.id == 33) {
+        if (body.data.world.bodies[20].id == body.data.id || body.data.world.bodies[19].id == body.data.id) {
           console.log("Hit end");
           PrisonBreak.game.state.start('win');
         }
