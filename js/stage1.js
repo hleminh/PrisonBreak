@@ -51,18 +51,20 @@ var stage1State = {
 
     map.setCollision([3, 2, 4, 35, 36], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
-
+    map.setCollision(114, true, endLayer);
+    PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
+    console.log(endLayer);
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
       if (body) {
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
           console.log("Hit trap");
-          // this.player.sprite.body.x = this.startingX;
-          // this.player.sprite.body.y = this.startingY;
+          this.player.sprite.body.x = this.startingX;
+          this.player.sprite.body.y = this.startingY;
         }
-        if (endGroup.children.indexOf(body) > -1) {
+        if (body.data.id == 33) {
           console.log("Hit end");
-          // PrisonBreak.game.state.start('win');
+          PrisonBreak.game.state.start('win');
         }
       }
     }
