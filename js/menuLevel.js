@@ -19,7 +19,7 @@ var menuLevelState = {
     });
     level2.inputEnabled = true;
     level2.events.onInputUp.addOnce(function(){
-      // TODO PrisonBreak.game.state.start('stage2')
+       PrisonBreak.game.state.start('stage2');
     }, this);
   }
 }

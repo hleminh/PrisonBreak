@@ -28,8 +28,6 @@ var stage1State = {
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
 
-    PrisonBreak.deathCount = 0;
-
     PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 20, 'Deaths: ', {
       font: '24px Arial',
       fill: '#fff'

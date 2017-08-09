@@ -5,6 +5,7 @@ var menuState = {
       fill: "#ffffff"
     });
 
+    PrisonBreak.deathCount = 0;
     var startLabel = PrisonBreak.game.add.text(150, PrisonBreak.configs.GAME_HEIGHT - 300, 'Play Game', {
       font: "50px Arial",
       fill: "#ffffff"
