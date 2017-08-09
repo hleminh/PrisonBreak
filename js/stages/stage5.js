@@ -143,7 +143,8 @@ var stage5State = {
   },
   update() {
     for (var myTile of this.checkArr){
-      if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48 && this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48){
+      if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48
+        && this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48){
         this.startingX = myTile.worldX + myTile.centerX; //Tile X ở góc trái trong khi anchor của player ở giữa nên phải cộng thêm để cho player vào giữa tile
         this.startingY = myTile.worldY + myTile.centerY;
       }

@@ -14,6 +14,7 @@ var winState = {
     enterKey.onDown.addOnce(this.start, this);
   },
   start: function(){
+    PrisonBreak.deathCount = 0;
     PrisonBreak.game.state.start('stage1');
 
   }
