@@ -1,5 +1,5 @@
 class Saw2 {
-  constructor(centerX, centerY, radius) {
+  constructor(centerX, centerY, radius, angle) {
     this.sprite = PrisonBreak.trapGroup.create(null, null, 'saw1');
 
     this.sprite.body.collideWorldBounds = true;
@@ -12,7 +12,7 @@ class Saw2 {
     this.centerX = centerX;
     this.centerY = centerY;
     this.radius = radius;
-    this.angle = 0;
+    this.angle = angle;
 
     this.sprite.update = this.update.bind(this);
   }
