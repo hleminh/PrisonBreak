@@ -4,8 +4,8 @@ var stage2State = {
     PrisonBreak.game.load.image('tiles', '/assets/tiles.png');
   },
   create: function() {
-    this.startingX = 340;
-    this.startingY = 50;
+    this.startingX = 500;
+    this.startingY = 200;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
@@ -21,24 +21,34 @@ var stage2State = {
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     map.setCollision(114, true, endLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
-    map.setCollision([3, 2, 4, 35, 36], true, wallLayer);
+    map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
     PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 20, 'Deaths: ', {
+    var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
       font: '24px Arial',
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 60, 'Stage 2 ', {
+    menu.inputEnabled = true;
+    menu.events.onInputUp.addOnce(function() {
+      PrisonBreak.game.state.start('menu');
+    }, this);
+
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 18, 'DEATHS: ', {
       font: '24px Arial',
       fill: '#fff'
     });
 
-    this.deathLabel = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 100, 20, PrisonBreak.deathCount.toString(), {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH/2 - 45, 18, 'STAGE 2', {
+      font: '24px Arial',
+      fill: '#fff'
+    });
+
+    this.deathLabel = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 90, 18, PrisonBreak.deathCount.toString(), {
       font: '24px Arial',
       fill: '#fff'
     });

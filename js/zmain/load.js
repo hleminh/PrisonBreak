@@ -5,12 +5,13 @@ var loadState = {
       fill: "#ffffff"
     });
 
+    PrisonBreak.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     PrisonBreak.game.scale.minWidth = PrisonBreak.configs.GAME_WIDTH / 2;
     PrisonBreak.game.scale.minHeight = PrisonBreak.configs.GAME_HEIGHT / 2;
     PrisonBreak.game.scale.maxWidth = PrisonBreak.configs.GAME_WIDTH;
     PrisonBreak.game.scale.maxHeight = PrisonBreak.configs.GAME_HEIGHT;
     PrisonBreak.game.scale.pageAlignHorizontally = true;
-    PrisonBreak.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    PrisonBreak.game.scale.pageAlignVertically = true;
     PrisonBreak.game.time.advancedTiming = true;
 
     PrisonBreak.game.load.image('player', 'assets/player.png');
