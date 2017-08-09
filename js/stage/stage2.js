@@ -81,7 +81,7 @@ var stage2State = {
         }
         if (body.data.world.bodies[4].id == body.data.id || body.data.world.bodies[5].id == body.data.id) {
           body.clearCollision(true);
-          PrisonBreak.game.state.start('stage1');
+          PrisonBreak.game.state.start('win');
         }
       }
     }
