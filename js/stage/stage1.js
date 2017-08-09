@@ -6,21 +6,6 @@ var stage1State = {
   create: function() {
     this.startingX = 50;
     this.startingY = 200;
-    PrisonBreak.deathCount = 0;
-
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 20, 'Deaths: ', {
-      font: '24px Arial',
-      fill: '#fff'
-    });
-
-    this.deathLabel = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 100, 20, PrisonBreak.deathCount.toString(), {
-      font: '24px Arial',
-      fill: '#fff'
-    });
-
-    PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
-    PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
-    PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
@@ -34,6 +19,31 @@ var stage1State = {
     wallLayer = map.createLayer('Tile Layer 2', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
+    map.setCollision(114, true, endLayer);
+    PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
+    map.setCollision([3, 2, 4, 35, 36], true, wallLayer);
+    PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
+
+    PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
+    PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+
+    PrisonBreak.deathCount = 0;
+
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 20, 'Deaths: ', {
+      font: '24px Arial',
+      fill: '#fff'
+    });
+
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 60, 'Stage 1 ', {
+      font: '24px Arial',
+      fill: '#fff'
+    });
+
+    this.deathLabel = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 100, 20, PrisonBreak.deathCount.toString(), {
+      font: '24px Arial',
+      fill: '#fff'
+    });
 
     PrisonBreak.game.physics.p2.setBoundsToWorld(true, true, true, true, false);
 
@@ -61,10 +71,7 @@ var stage1State = {
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
 
-    map.setCollision([3, 2, 4, 35, 36], true, wallLayer);
-    PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
-    map.setCollision(114, true, endLayer);
-    PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
+
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
       if (body) {
@@ -73,9 +80,8 @@ var stage1State = {
           this.player.sprite.body.y = this.startingY;
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
-
         }
-        if (body.data.world.bodies[20].id == body.data.id || body.data.world.bodies[19].id == body.data.id) {
+        if (body.data.world.bodies[4].id == body.data.id || body.data.world.bodies[5].id == body.data.id) {
           body.clearCollision(true);
           PrisonBreak.game.state.start('stage2');
         }
