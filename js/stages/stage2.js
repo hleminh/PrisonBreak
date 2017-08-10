@@ -108,12 +108,16 @@ var stage2State = {
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
         if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
-          console.log("key");
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
           this.player.sprite.body.x = this.startingX;
           this.player.sprite.body.y = this.startingY;
+          PrisonBreak.keyGroup.removeAll(true,false);
+          PrisonBreak.key = [];
+          PrisonBreak.key.push(new Key(528, 290));
+          PrisonBreak.key.push(new Key(528, 574));
+          PrisonBreak.key.push(new Key(625, 432));
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }
