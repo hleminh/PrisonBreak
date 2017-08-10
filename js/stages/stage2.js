@@ -43,7 +43,7 @@ var stage2State = {
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH/2 - 45, 18, 'STAGE 2', {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 2', {
       font: '24px Arial',
       fill: '#fff'
     });
@@ -66,15 +66,20 @@ var stage2State = {
       player_speed: 180
     });
 
-    // PrisonBreak.saw = [];
-    // PrisonBreak.saw.push(new Saw(168, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw(264, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw(360, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw(456, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw(216, 264, 120, 268));
-    // PrisonBreak.saw.push(new Saw(312, 264, 120, 268));
-    // PrisonBreak.saw.push(new Saw(408, 264, 120, 268));
-    // PrisonBreak.saw.push(new Saw(504, 264, 120, 268));
+    PrisonBreak.saw = [];
+    PrisonBreak.saw.push(new Saw2(528, 432, 0, 0));
+    PrisonBreak.saw.push(new Saw2(528, 432, 50, 0));
+    PrisonBreak.saw.push(new Saw2(528, 432, 100, 0));
+    PrisonBreak.saw.push(new Saw2(528, 432, 150, 0));
+    PrisonBreak.saw.push(new Saw2(528, 432, 50, Math.PI));
+    PrisonBreak.saw.push(new Saw2(528, 432, 100, Math.PI));
+    PrisonBreak.saw.push(new Saw2(528, 432, 150, Math.PI));
+    PrisonBreak.saw.push(new Saw2(528, 432, 50, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 432, 100, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 432, 150, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 432, 50, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 432, 100, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 432, 150, Math.PI / 2));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
