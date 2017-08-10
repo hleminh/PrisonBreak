@@ -19,8 +19,8 @@ var stage6State = {
     wallLayer = map.createLayer('Tile Layer 2', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
-    map.setCollision(114, true, endLayer);
-    PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
+    // map.setCollision(114, true, endLayer);
+    // PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
     map.setCollision([1, 3, 2, 4, 33, 34, 35, 36, 69, 70, 115, 116], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
@@ -71,14 +71,8 @@ var stage6State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
-    // PrisonBreak.saw.push(new Saw1(168, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw1(264, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw1(360, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw1(456, 120, 120, 268));
-    // PrisonBreak.saw.push(new Saw1(216, 264, 120, 268));
-    // PrisonBreak.saw.push(new Saw1(312, 264, 120, 268));
-    // PrisonBreak.saw.push(new Saw1(408, 264, 120, 268));
-    // PrisonBreak.saw.push(new Saw1(504, 264, 120, 268));
+    PrisonBreak.saw.push(new Saw6(168, 120, 168, 316, 120, 268));
+
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
@@ -131,13 +125,6 @@ var stage6State = {
 
   },
   update() {
-    // for (var myTile of this.checkArr){
-    //   if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48
-    //     && this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48){
-    //     this.startingX = myTile.worldX + myTile.centerX; //Tile X ở góc trái trong khi anchor của player ở giữa nên phải cộng thêm để cho player vào giữa tile
-    //     this.startingY = myTile.worldY + myTile.centerY;
-    //   }
-    // }
   },
   render() {
 
