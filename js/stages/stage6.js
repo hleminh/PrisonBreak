@@ -1,28 +1,27 @@
-var stage5State = {
+var stage6State = {
   preload: function() {
-    PrisonBreak.game.load.tilemap('stage5', 'assets/stages/stage5.json', null, Phaser.Tilemap.TILED_JSON);
+    PrisonBreak.game.load.tilemap('stage6', 'assets/stages/stage6.json', null, Phaser.Tilemap.TILED_JSON);
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 100;
-    this.startingY = 100;
+    this.startingX = 315;
+    this.startingY = 215;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
 
     // PrisonBreak.game.physics.p2.updateBoundsCollisionGroup();
 
-    map = this.game.add.tilemap('stage5');
+    map = this.game.add.tilemap('stage6');
     map.addTilesetImage('tiles', 'tiles');
 
     groundLayer = map.createLayer('Tile Layer 1', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     wallLayer = map.createLayer('Tile Layer 2', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
-    checkLayer = map.createLayer('Tile Layer 5', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     map.setCollision(114, true, endLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
-    map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
+    map.setCollision([1, 3, 2, 4, 33, 34, 35, 36, 69, 70, 115, 116], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
     groundLayer.resizeWorld();
@@ -46,7 +45,7 @@ var stage5State = {
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH/2 - 45, 18, 'STAGE 5', {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH/2 - 45, 18, 'STAGE 6', {
       font: '24px Arial',
       fill: '#fff'
     });
@@ -72,27 +71,17 @@ var stage5State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw1(168, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(264, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(360, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(456, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(216, 264, 120, 268));
-    PrisonBreak.saw.push(new Saw1(312, 264, 120, 268));
-    PrisonBreak.saw.push(new Saw1(408, 264, 120, 268));
-    PrisonBreak.saw.push(new Saw1(504, 264, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(168, 120, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(264, 120, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(360, 120, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(456, 120, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(216, 264, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(312, 264, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(408, 264, 120, 268));
+    // PrisonBreak.saw.push(new Saw1(504, 264, 120, 268));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
-
-    var mapArray = checkLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
-    this.checkArr = [];
-
-    for (var i = 0; i < mapArray.length; i++) {
-      var myTile = mapArray[i];
-      if (myTile.index == 114) {
-        this.checkArr.push(myTile);
-      }
-    }
 
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
@@ -142,13 +131,13 @@ var stage5State = {
 
   },
   update() {
-    for (var myTile of this.checkArr){
-      if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48
-        && this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48){
-        this.startingX = myTile.worldX + myTile.centerX; //Tile X ở góc trái trong khi anchor của player ở giữa nên phải cộng thêm để cho player vào giữa tile
-        this.startingY = myTile.worldY + myTile.centerY;
-      }
-    }
+    // for (var myTile of this.checkArr){
+    //   if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48
+    //     && this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48){
+    //     this.startingX = myTile.worldX + myTile.centerX; //Tile X ở góc trái trong khi anchor của player ở giữa nên phải cộng thêm để cho player vào giữa tile
+    //     this.startingY = myTile.worldY + myTile.centerY;
+    //   }
+    // }
   },
   render() {
 

@@ -30,5 +30,14 @@ var menuLevelState = {
     level5.events.onInputUp.addOnce(function(){
        PrisonBreak.game.state.start('stage5');
     }, this);
+
+    var level6 = PrisonBreak.game.add.text(600, 250, 'Level 6', {
+      font: '30px Arial',
+      fill: '#fff'
+    });
+    level6.inputEnabled = true;
+    level6.events.onInputUp.addOnce(function(){
+       PrisonBreak.game.state.start('stage6');
+    }, this);
   }
 }
