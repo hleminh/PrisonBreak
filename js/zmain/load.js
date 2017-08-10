@@ -13,6 +13,7 @@ var loadState = {
     PrisonBreak.game.scale.pageAlignHorizontally = true;
     PrisonBreak.game.scale.pageAlignVertically = true;
     PrisonBreak.game.time.advancedTiming = true;
+    PrisonBreak.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
     PrisonBreak.game.load.image('player', 'assets/player.png');
     PrisonBreak.game.load.image('key', 'assets/key.png');
