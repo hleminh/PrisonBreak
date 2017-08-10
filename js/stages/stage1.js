@@ -19,14 +19,15 @@ var stage1State = {
     wallLayer = map.createLayer('Tile Layer 2', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
-    map.setCollision(114, true, endLayer);
-    PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
+
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
     PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
       font: '24px Arial',
@@ -79,19 +80,26 @@ var stage1State = {
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
 
+    var mapEndArray = endLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
+    this.endArr = [];
+
+    for (var i = 0; i < mapEndArray.length; i++) {
+      var myEndTile = mapEndArray[i];
+      if (myEndTile.index == 114) {
+        this.endArr.push(myEndTile);
+      }
+    }
 
 
-    var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
+
+
+    var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
           this.player.sprite.body.x = this.startingX;
           this.player.sprite.body.y = this.startingY;
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
-        }
-        if (body.data.world.bodies[4].id == body.data.id || body.data.world.bodies[5].id == body.data.id) {
-          body.clearCollision(true);
-          PrisonBreak.game.state.start('stage2');
         }
       }
     }
@@ -128,7 +136,14 @@ var stage1State = {
 
   },
   update() {
-
+    if (PrisonBreak.keyGroup.countLiving() == 0) {
+      for (var myEndTile of this.endArr) {
+        if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
+          this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
+          PrisonBreak.game.state.start('stage2');
+        }
+      }
+    }
   },
   render() {
 
