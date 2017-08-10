@@ -1,7 +1,7 @@
 var stage2State = {
   preload: function() {
     PrisonBreak.game.load.tilemap('stage2', 'assets/stages/stage2.json', null, Phaser.Tilemap.TILED_JSON);
-    PrisonBreak.game.load.image('tiles', '/assets/tiles.png');
+    PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
     this.startingX = 500;
