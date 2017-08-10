@@ -1,6 +1,6 @@
 class Saw2 {
   constructor(centerX, centerY, radius, angle) {
-    this.sprite = PrisonBreak.trapGroup.create(null, null, 'saw1');
+    this.sprite = PrisonBreak.trapGroup.create(null, null, 'saw2');
 
     this.sprite.body.collideWorldBounds = true;
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
@@ -23,6 +23,6 @@ class Saw2 {
     this.angle += this.SAW_SPEED * PrisonBreak.game.time.physicsElapsed;
     // this.sprite.body.rotation = this.angle;
     this.sprite.body.rotation += 30;
-    
+
   }
 }
