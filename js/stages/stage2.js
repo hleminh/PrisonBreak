@@ -27,6 +27,7 @@ var stage2State = {
     PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.keyGroup = PrisonBreak.game.add.group();
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
       font: '24px Arial',
@@ -81,8 +82,14 @@ var stage2State = {
     PrisonBreak.saw.push(new Saw2(528, 432, 100, Math.PI / 2));
     PrisonBreak.saw.push(new Saw2(528, 432, 150, Math.PI / 2));
 
+    PrisonBreak.key = [];
+    PrisonBreak.key.push(new Key(528, 290));
+    PrisonBreak.key.push(new Key(528, 574));
+    PrisonBreak.key.push(new Key(625, 432));
+
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
 
 
 

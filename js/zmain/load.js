@@ -15,6 +15,7 @@ var loadState = {
     PrisonBreak.game.time.advancedTiming = true;
 
     PrisonBreak.game.load.image('player', 'assets/player.png');
+    PrisonBreak.game.load.image('key', 'assets/key.png');
     PrisonBreak.game.load.image('saw1', 'assets/saws/saw_1.png');
     PrisonBreak.game.load.image('saw2', 'assets/saws/saw_2.png');
     PrisonBreak.game.load.image('saw3', 'assets/saws/saw_3.png');
