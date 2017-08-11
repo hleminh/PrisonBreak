@@ -1,4 +1,4 @@
-var stage5State = {
+var stage6State = {
   preload: function() {
     PrisonBreak.game.load.tilemap('stage5', 'assets/stages/stage5.json', null, Phaser.Tilemap.TILED_JSON);
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
@@ -47,7 +47,7 @@ var stage5State = {
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 5', {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 6', {
       font: '24px Arial',
       fill: '#fff'
     });
@@ -242,7 +242,7 @@ var stage5State = {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
-          PrisonBreak.game.state.start('stage6');
+          PrisonBreak.game.state.start('win');
         }
       }
     }
