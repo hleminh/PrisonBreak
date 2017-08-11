@@ -77,7 +77,7 @@ var stage6State = {
     PrisonBreak.saw.push(new Saw6(263, 455, 263, 407, 311, 455, 'left'));
     PrisonBreak.saw.push(new Saw6(263, 600, 263, 407, 456, 600, 'left'));
     // saw center
-    PrisonBreak.saw.push(new Saw6(551, 552, 407, 551, 408, 552, 'right'));
+    PrisonBreak.saw.push(new Saw6(551, 552, 407, 551, 216, 552, 'center'));
     //saw right
     PrisonBreak.saw.push(new Saw6(695, 310, 551, 695, 166, 310, 'right'));
     PrisonBreak.saw.push(new Saw6(695, 455, 551, 695, 311, 455, 'right'));

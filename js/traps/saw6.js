@@ -68,7 +68,7 @@ class Saw6 {
       else {
         this.sprite.body.velocity.y = -this.SAW_SPEED;
       }
-    } else {
+    } else if(this.side === 'right') {
       if(this.sprite.y <= this.y1 && this.sprite.x >= this.x2) {
         this.DIRECT_VER_RIGHT = false;
         this.DIRECT_VER_LEFT = true;
@@ -88,6 +88,51 @@ class Saw6 {
         this.DIRECT_HOR_DOWN = false;
       }
       if(this.sprite.x >= this.x2 && this.sprite.y >= this.y2){
+        this.DIRECT_VER_RIGHT = false;
+        this.DIRECT_VER_LEFT = false;
+        this.DIRECT_HOR_UP = true;
+        this.DIRECT_HOR_DOWN = false;
+      }
+
+      if(this.DIRECT_VER_RIGHT){
+        this.sprite.body.velocity.x = this.SAW_SPEED;
+        this.sprite.body.velocity.y = 0;
+      }
+      else if(this.DIRECT_HOR_DOWN){
+        this.sprite.body.velocity.x = 0;
+        this.sprite.body.velocity.y = this.SAW_SPEED;
+      }
+      else if(this.DIRECT_VER_LEFT){
+        this.sprite.body.velocity.x = -this.SAW_SPEED;
+        this.sprite.body.velocity.y = 0;
+      }
+      else if(this.DIRECT_HOR_UP){
+        this.sprite.body.velocity.x = 0;
+        this.sprite.body.velocity.y = -this.SAW_SPEED;
+      }
+      else {
+        this.sprite.body.velocity.y = -this.SAW_SPEED;
+      }
+    } else {
+      if(this.sprite.y <= this.y1 && this.sprite.x <= this.x1) {
+        this.DIRECT_VER_RIGHT = true;
+        this.DIRECT_VER_LEFT = false;
+        this.DIRECT_HOR_UP = false;
+        this.DIRECT_HOR_DOWN = false;
+      }
+      if(this.sprite.x >= this.x2 && this.sprite.y <= this.y1){
+        this.DIRECT_VER_RIGHT = false;
+        this.DIRECT_VER_LEFT = false;
+        this.DIRECT_HOR_UP = false;
+        this.DIRECT_HOR_DOWN = true;
+      }
+      if(this.sprite.y >= this.y2 && this.sprite.x >= this.x2){
+        this.DIRECT_VER_RIGHT = false;
+        this.DIRECT_VER_LEFT = true;
+        this.DIRECT_HOR_UP = false;
+        this.DIRECT_HOR_DOWN = false;
+      }
+      if(this.sprite.x <= this.x1 && this.sprite.y >= this.y2){
         this.DIRECT_VER_RIGHT = false;
         this.DIRECT_VER_LEFT = false;
         this.DIRECT_HOR_UP = true;
