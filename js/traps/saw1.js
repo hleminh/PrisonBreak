@@ -14,9 +14,10 @@ class Saw1 {
   }
 
   update() {
-    this.sprite.body.rotation += 30;
-    if (this.sprite.y < this.y1) this.DIRECT = false;
-    if (this.sprite.y > this.y2) this.DIRECT = true;
+    this.sprite.body.rotation += this.SAW_SPEED * PrisonBreak.game.time.physicsElapsed;
+    
+    if (this.sprite.body.y <= this.y1) this.DIRECT = false;
+    if (this.sprite.body.y >= this.y2) this.DIRECT = true;
 
     if (this.DIRECT) this.sprite.body.velocity.y = -this.SAW_SPEED;
     else this.sprite.body.velocity.y = this.SAW_SPEED;
