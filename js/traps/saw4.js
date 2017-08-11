@@ -1,11 +1,11 @@
 class Saw4 {
-  constructor(x, y, width, height, bool) {
+  constructor(x, y, width, height, clockwise) {
     this.sprite = PrisonBreak.trapGroup.create(x, y, 'saw4');
     this.sprite.body.collideWorldBounds = true;
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.kinematic = true;
     this.SAW_SPEED = 135;
-    this.clockwise = bool;
+    this.clockwise = clockwise;
     this.x = x+0.00001;
     this.y = y+0.00001;
     this.WIDTH = width;
