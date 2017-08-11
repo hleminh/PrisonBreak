@@ -4,8 +4,8 @@ var stage5State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 70;
-    this.startingY = 160;
+    this.startingX = 120;
+    this.startingY = 200;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
@@ -73,45 +73,45 @@ var stage5State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw2(239, 192, 0, 0));
-    PrisonBreak.saw.push(new Saw2(239, 192, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(239, 192, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(239, 192, 40, 0));
-    PrisonBreak.saw.push(new Saw2(239, 192, 80, 0));
-    PrisonBreak.saw.push(new Saw2(239, 192, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239, 192, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239, 192, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239, 192, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(335, 240, 0, 0));
+    PrisonBreak.saw.push(new Saw2(335, 240, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(335, 240, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(335, 240, 40, 0));
+    PrisonBreak.saw.push(new Saw2(335, 240, 80, 0));
+    PrisonBreak.saw.push(new Saw2(335, 240, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(335, 240, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(335, 240, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(335, 240, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(432, 192, 0, 0));
-    PrisonBreak.saw.push(new Saw2(432, 192, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(432, 192, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(432, 192, 40, 0));
-    PrisonBreak.saw.push(new Saw2(432, 192, 80, 0));
-    PrisonBreak.saw.push(new Saw2(432, 192, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432, 192, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432, 192, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432, 192, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 240, 0, 0));
+    PrisonBreak.saw.push(new Saw2(528, 240, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(528, 240, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(528, 240, 40, 0));
+    PrisonBreak.saw.push(new Saw2(528, 240, 80, 0));
+    PrisonBreak.saw.push(new Saw2(528, 240, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 240, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 240, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(528, 240, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(625, 192, 0, 0));
-    PrisonBreak.saw.push(new Saw2(625, 192, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(625, 192, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(625, 192, 40, 0));
-    PrisonBreak.saw.push(new Saw2(625, 192, 80, 0));
-    PrisonBreak.saw.push(new Saw2(625, 192, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625, 192, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625, 192, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625, 192, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(721, 240, 0, 0));
+    PrisonBreak.saw.push(new Saw2(721, 240, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(721, 240, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(721, 240, 40, 0));
+    PrisonBreak.saw.push(new Saw2(721, 240, 80, 0));
+    PrisonBreak.saw.push(new Saw2(721, 240, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(721, 240, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(721, 240, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(721, 240, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(818, 192, 0, 0));
-    PrisonBreak.saw.push(new Saw2(818, 192, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(818, 192, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(818, 192, 40, 0));
-    PrisonBreak.saw.push(new Saw2(818, 192, 80, 0));
-    PrisonBreak.saw.push(new Saw2(818, 192, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818, 192, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818, 192, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818, 192, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(914, 240, 0, 0));
+    PrisonBreak.saw.push(new Saw2(914, 240, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(914, 240, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(914, 240, 40, 0));
+    PrisonBreak.saw.push(new Saw2(914, 240, 80, 0));
+    PrisonBreak.saw.push(new Saw2(914, 240, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(914, 240, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(914, 240, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(914, 240, 80, -Math.PI / 2));
 
     PrisonBreak.saw.push(new Saw2(818, 578, 0, 0));
     PrisonBreak.saw.push(new Saw2(818, 578, 40, Math.PI));

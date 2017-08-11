@@ -6,7 +6,7 @@ class Saw1 {
     this.sprite.body.collideWorldBounds = true;
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.kinematic = true;
-    this.SAW_SPEED = 135;
+    this.SAW_SPEED = 300;
     this.DIRECT;
     this.y1 = y1;
     this.y2 = y2;
@@ -15,7 +15,7 @@ class Saw1 {
 
   update() {
     this.sprite.body.rotation += this.SAW_SPEED * PrisonBreak.game.time.physicsElapsed;
-    
+
     if (this.sprite.body.y <= this.y1) this.DIRECT = false;
     if (this.sprite.body.y >= this.y2) this.DIRECT = true;
 

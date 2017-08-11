@@ -4,7 +4,7 @@ var stage2State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 500;
+    this.startingX = 620;
     this.startingY = 200;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
@@ -70,24 +70,24 @@ var stage2State = {
     });
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw2(528, 432, 0, 0));
-    PrisonBreak.saw.push(new Saw2(528, 432, 50, 0));
-    PrisonBreak.saw.push(new Saw2(528, 432, 100, 0));
-    PrisonBreak.saw.push(new Saw2(528, 432, 150, 0));
-    PrisonBreak.saw.push(new Saw2(528, 432, 50, Math.PI));
-    PrisonBreak.saw.push(new Saw2(528, 432, 100, Math.PI));
-    PrisonBreak.saw.push(new Saw2(528, 432, 150, Math.PI));
-    PrisonBreak.saw.push(new Saw2(528, 432, 50, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(528, 432, 100, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(528, 432, 150, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(528, 432, 50, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(528, 432, 100, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(528, 432, 150, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(624, 471, 0, 0));
+    PrisonBreak.saw.push(new Saw2(624, 471, 55, 0));
+    PrisonBreak.saw.push(new Saw2(624, 471, 110, 0));
+    PrisonBreak.saw.push(new Saw2(624, 471, 165, 0));
+    PrisonBreak.saw.push(new Saw2(624, 471, 55, Math.PI));
+    PrisonBreak.saw.push(new Saw2(624, 471, 110, Math.PI));
+    PrisonBreak.saw.push(new Saw2(624, 471, 165, Math.PI));
+    PrisonBreak.saw.push(new Saw2(624, 471, 55, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(624, 471, 110, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(624, 471, 165, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(624, 471, 55, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(624, 471, 110, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(624, 471, 165, Math.PI / 2));
 
     PrisonBreak.key = [];
-    PrisonBreak.key.push(new Key(528, 290));
-    PrisonBreak.key.push(new Key(528, 574));
-    PrisonBreak.key.push(new Key(625, 432));
+    PrisonBreak.key.push(new Key(624, 338));
+    PrisonBreak.key.push(new Key(624, 622));
+    PrisonBreak.key.push(new Key(721, 480));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
@@ -114,9 +114,9 @@ var stage2State = {
           this.player.sprite.body.y = this.startingY;
           PrisonBreak.keyGroup.removeAll(true,false);
           PrisonBreak.key = [];
-          PrisonBreak.key.push(new Key(528, 290));
-          PrisonBreak.key.push(new Key(528, 574));
-          PrisonBreak.key.push(new Key(625, 432));
+          PrisonBreak.key.push(new Key(624, 338));
+          PrisonBreak.key.push(new Key(624, 622));
+          PrisonBreak.key.push(new Key(721, 480));
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }

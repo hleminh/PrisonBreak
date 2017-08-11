@@ -68,14 +68,16 @@ var stage1State = {
     });
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw1(312, 312, 312, 462));
-    PrisonBreak.saw.push(new Saw1(360, 458, 312, 462));
-    PrisonBreak.saw.push(new Saw1(408, 312, 312, 462));
-    PrisonBreak.saw.push(new Saw1(456, 458, 312, 462));
-    PrisonBreak.saw.push(new Saw1(503, 312, 312, 462));
-    PrisonBreak.saw.push(new Saw1(553, 458, 312, 462));
-    PrisonBreak.saw.push(new Saw1(600, 312, 312, 462));
-    PrisonBreak.saw.push(new Saw1(649, 458, 312, 462));
+    PrisonBreak.saw.push(new Saw1(360, 300, 310, 500));
+    PrisonBreak.saw.push(new Saw1(408, 510, 310, 500));
+    PrisonBreak.saw.push(new Saw1(456, 300, 310, 500));
+    PrisonBreak.saw.push(new Saw1(503, 510, 310, 500));
+    PrisonBreak.saw.push(new Saw1(553, 300, 310, 500));
+    PrisonBreak.saw.push(new Saw1(600, 510, 310, 500));
+    PrisonBreak.saw.push(new Saw1(649, 300, 310, 500));
+    PrisonBreak.saw.push(new Saw1(695, 510, 310, 500));
+    PrisonBreak.saw.push(new Saw1(743, 300, 310, 500));
+    PrisonBreak.saw.push(new Saw1(793, 510, 310, 500));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
