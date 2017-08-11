@@ -20,8 +20,7 @@ var stage5State = {
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     checkLayer = map.createLayer('Tile Layer 5', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
-    map.setCollision(114, true, endLayer);
-    PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
+
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
@@ -30,6 +29,8 @@ var stage5State = {
     PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
       font: '24px Arial',
@@ -46,7 +47,7 @@ var stage5State = {
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH/2 - 45, 18, 'STAGE 5', {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 5', {
       font: '24px Arial',
       fill: '#fff'
     });
@@ -72,17 +73,97 @@ var stage5State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw1(168, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(264, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(360, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(456, 120, 120, 268));
-    PrisonBreak.saw.push(new Saw1(216, 264, 120, 268));
-    PrisonBreak.saw.push(new Saw1(312, 264, 120, 268));
-    PrisonBreak.saw.push(new Saw1(408, 264, 120, 268));
-    PrisonBreak.saw.push(new Saw1(504, 264, 120, 268));
+    PrisonBreak.saw.push(new Saw2(239, 192, 0, 0));
+    PrisonBreak.saw.push(new Saw2(239, 192, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239, 192, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239, 192, 40, 0));
+    PrisonBreak.saw.push(new Saw2(239, 192, 80, 0));
+    PrisonBreak.saw.push(new Saw2(239, 192, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239, 192, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239, 192, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239, 192, 80, -Math.PI / 2));
+
+    PrisonBreak.saw.push(new Saw2(432, 192, 0, 0));
+    PrisonBreak.saw.push(new Saw2(432, 192, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432, 192, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432, 192, 40, 0));
+    PrisonBreak.saw.push(new Saw2(432, 192, 80, 0));
+    PrisonBreak.saw.push(new Saw2(432, 192, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432, 192, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432, 192, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432, 192, 80, -Math.PI / 2));
+
+    PrisonBreak.saw.push(new Saw2(625, 192, 0, 0));
+    PrisonBreak.saw.push(new Saw2(625, 192, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625, 192, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625, 192, 40, 0));
+    PrisonBreak.saw.push(new Saw2(625, 192, 80, 0));
+    PrisonBreak.saw.push(new Saw2(625, 192, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625, 192, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625, 192, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625, 192, 80, -Math.PI / 2));
+
+    PrisonBreak.saw.push(new Saw2(818, 192, 0, 0));
+    PrisonBreak.saw.push(new Saw2(818, 192, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818, 192, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818, 192, 40, 0));
+    PrisonBreak.saw.push(new Saw2(818, 192, 80, 0));
+    PrisonBreak.saw.push(new Saw2(818, 192, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818, 192, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818, 192, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818, 192, 80, -Math.PI / 2));
+
+    PrisonBreak.saw.push(new Saw2(818, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(818, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(818, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(818, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818, 578, 80, -Math.PI / 2));
+
+    PrisonBreak.saw.push(new Saw2(625, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(625, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(625, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(625, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625, 578, 80, -Math.PI / 2));
+
+    PrisonBreak.saw.push(new Saw2(432, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(432, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(432, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(432, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432, 578, 80, -Math.PI / 2));
+
+    PrisonBreak.saw.push(new Saw2(239, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(239, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(239, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(239, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239, 578, 80, -Math.PI / 2));
+
+    PrisonBreak.key = [];
+    PrisonBreak.key.push(new Key(743, 500));
+    PrisonBreak.key.push(new Key(552, 500));
+    PrisonBreak.key.push(new Key(166, 500));
+    PrisonBreak.key.push(new Key(360, 500));
+
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
+
 
     var mapArray = checkLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
     this.checkArr = [];
@@ -94,18 +175,33 @@ var stage5State = {
       }
     }
 
+    var mapEndArray = endLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
+    this.endArr = [];
+
+    for (var i = 0; i < mapEndArray.length; i++) {
+      var myEndTile = mapEndArray[i];
+      if (myEndTile.index == 114) {
+        this.endArr.push(myEndTile);
+      }
+    }
+
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
       if (body) {
+        if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
+          body.sprite.destroy();
+        }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
           this.player.sprite.body.x = this.startingX;
           this.player.sprite.body.y = this.startingY;
+          PrisonBreak.keyGroup.removeAll(true,false);
+          PrisonBreak.key = [];
+          PrisonBreak.key.push(new Key(743, 500));
+          PrisonBreak.key.push(new Key(552, 500));
+          PrisonBreak.key.push(new Key(166, 500));
+          PrisonBreak.key.push(new Key(360, 500));
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
-        }
-        if (body.data.world.bodies[4].id == body.data.id || body.data.world.bodies[5].id == body.data.id) {
-          body.clearCollision(true);
-          PrisonBreak.game.state.start('win');
         }
       }
     }
@@ -142,9 +238,18 @@ var stage5State = {
 
   },
   update() {
-    for (var myTile of this.checkArr){
-      if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48
-        && this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48){
+    if (PrisonBreak.keyGroup.countLiving() == 0) {
+      for (var myEndTile of this.endArr) {
+        if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
+          this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
+          PrisonBreak.game.state.start('stage6');
+        }
+      }
+    }
+
+    for (var myTile of this.checkArr) {
+      if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48 &&
+        this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48) {
         this.startingX = myTile.worldX + myTile.centerX; //Tile X ở góc trái trong khi anchor của player ở giữa nên phải cộng thêm để cho player vào giữa tile
         this.startingY = myTile.worldY + myTile.centerY;
       }

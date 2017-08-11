@@ -20,8 +20,7 @@ var stage2State = {
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
 
-    // map.setCollision(114, true, endLayer);
-    // PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
+
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
@@ -161,7 +160,7 @@ var stage2State = {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
-          PrisonBreak.game.state.start('stage6');
+          PrisonBreak.game.state.start('stage5');
         }
       }
     }
