@@ -22,7 +22,25 @@ var menuLevelState = {
        PrisonBreak.game.state.start('stage2');
     }, this);
 
-    var level5 = PrisonBreak.game.add.text(450, 250, 'Level 5', {
+    var level6 = PrisonBreak.game.add.text(450, 250, 'Level 3', {
+      font: '30px Arial',
+      fill: '#fff'
+    });
+    level6.inputEnabled = true;
+    level6.events.onInputUp.addOnce(function(){
+       PrisonBreak.game.state.start('stage3');
+    }, this);
+
+    var level6 = PrisonBreak.game.add.text(600, 250, 'Level 4', {
+      font: '30px Arial',
+      fill: '#fff'
+    });
+    level6.inputEnabled = true;
+    level6.events.onInputUp.addOnce(function(){
+       PrisonBreak.game.state.start('stage4');
+    }, this);
+
+    var level5 = PrisonBreak.game.add.text(750, 250, 'Level 5', {
       font: '30px Arial',
       fill: '#fff'
     });
@@ -31,7 +49,7 @@ var menuLevelState = {
        PrisonBreak.game.state.start('stage5');
     }, this);
 
-    var level6 = PrisonBreak.game.add.text(600, 250, 'Level 6', {
+    var level6 = PrisonBreak.game.add.text(900, 250, 'Level 6', {
       font: '30px Arial',
       fill: '#fff'
     });

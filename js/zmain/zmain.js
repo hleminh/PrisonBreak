@@ -12,6 +12,8 @@ PrisonBreak.game.state.add('menu', menuState);
 PrisonBreak.game.state.add('menuLevel', menuLevelState)
 PrisonBreak.game.state.add('stage1', stage1State);
 PrisonBreak.game.state.add('stage2', stage2State);
+PrisonBreak.game.state.add('stage3', stage3State);
+PrisonBreak.game.state.add('stage4', stage4State);
 PrisonBreak.game.state.add('stage5', stage5State);
 PrisonBreak.game.state.add('stage6', stage6State);
 PrisonBreak.game.state.add('win', winState);
