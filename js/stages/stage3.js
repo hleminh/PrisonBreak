@@ -4,8 +4,8 @@ var stage3State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 120;
-    this.startingY = 200;
+    this.startingX = 570;
+    this.startingY = 445;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
@@ -72,13 +72,19 @@ var stage3State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
+    PrisonBreak.saw.push(new Saw3(500, 360, 160, 990, 190));
+    PrisonBreak.saw.push(new Saw3(500, 310, 160, 990, 190));
 
 
     PrisonBreak.key = [];
-    PrisonBreak.key.push(new Key(743, 500));
-    PrisonBreak.key.push(new Key(552, 500));
-    PrisonBreak.key.push(new Key(166, 500));
-    PrisonBreak.key.push(new Key(360, 500));
+    PrisonBreak.key.push(new Key(166, 360));
+    PrisonBreak.key.push(new Key(166, 310));
+    PrisonBreak.key.push(new Key(216, 310));
+    PrisonBreak.key.push(new Key(216, 360));
+    PrisonBreak.key.push(new Key(935, 310));
+    PrisonBreak.key.push(new Key(985, 310));
+    PrisonBreak.key.push(new Key(985, 360));
+    PrisonBreak.key.push(new Key(935, 360));
 
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
@@ -107,10 +113,15 @@ var stage3State = {
           this.player.sprite.body.y = this.startingY;
           PrisonBreak.keyGroup.removeAll(true,false);
           PrisonBreak.key = [];
-          PrisonBreak.key.push(new Key(743, 500));
-          PrisonBreak.key.push(new Key(552, 500));
-          PrisonBreak.key.push(new Key(166, 500));
-          PrisonBreak.key.push(new Key(360, 500));
+          PrisonBreak.key.push(new Key(166, 360));
+          PrisonBreak.key.push(new Key(166, 310));
+          PrisonBreak.key.push(new Key(216, 310));
+          PrisonBreak.key.push(new Key(216, 360));
+          PrisonBreak.key.push(new Key(935, 310));
+          PrisonBreak.key.push(new Key(985, 310));
+          PrisonBreak.key.push(new Key(985, 360));
+          PrisonBreak.key.push(new Key(935, 360));
+
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }

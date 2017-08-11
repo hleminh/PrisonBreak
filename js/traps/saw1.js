@@ -1,12 +1,12 @@
 class Saw1 {
-  constructor(x, y, y1, y2) {
+  constructor(x, y, y1, y2, speed) {
     this.sprite = PrisonBreak.trapGroup.create(x, y, 'saw1');
     this.sprite.update = this.update.bind(this);
 
     this.sprite.body.collideWorldBounds = true;
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.kinematic = true;
-    this.SAW_SPEED = 300;
+    this.SAW_SPEED = speed;
     this.DIRECT;
     this.y1 = y1;
     this.y2 = y2;
