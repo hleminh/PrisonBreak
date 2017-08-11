@@ -1,6 +1,6 @@
 class Saw3 {
   constructor(x, y, x1, x2) {
-    this.sprite = PrisonBreak.trapGroup.create(x, y, 'saw1');
+    this.sprite = PrisonBreak.trapGroup.create(x, y, 'saw3');
     this.sprite.update = this.update.bind(this);
 
     this.sprite.body.collideWorldBounds = true;
