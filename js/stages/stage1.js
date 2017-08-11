@@ -92,14 +92,31 @@ var stage1State = {
       }
     }
 
+    function fadePlayer() {
+      PrisonBreak.game.add.tween(stage1State.player.sprite).to({
+        alpha: 0
+      }, 100, Phaser.Easing.Linear.None, true);
+      PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, rePosition, this);
+    };
+
+    function rePosition() {
+      stage1State.player.sprite.body.x = stage1State.startingX;
+      stage1State.player.sprite.body.y = stage1State.startingY;
+      PrisonBreak.game.add.tween(stage1State.player.sprite).to({
+        alpha: 1
+      }, 100, Phaser.Easing.Linear.None, true);
+    };
+
+
 
 
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-          this.player.sprite.body.x = this.startingX;
-          this.player.sprite.body.y = this.startingY;
+          // this.player.sprite.body.x = this.startingX;
+          // this.player.sprite.body.y = this.startingY;
+          fadePlayer();
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }

@@ -103,6 +103,26 @@ var stage2State = {
       }
     }
 
+    function fadePlayer() {
+      PrisonBreak.game.add.tween(stage2State.player.sprite).to({
+        alpha: 0
+      }, 100, Phaser.Easing.Linear.None, true);
+      PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, rePosition, this);
+    };
+
+    function rePosition() {
+      stage2State.player.sprite.body.x = stage2State.startingX;
+      stage2State.player.sprite.body.y = stage2State.startingY;
+      PrisonBreak.game.add.tween(stage2State.player.sprite).to({
+        alpha: 1
+      }, 100, Phaser.Easing.Linear.None, true);
+      PrisonBreak.keyGroup.removeAll(true,false);
+      PrisonBreak.key = [];
+      PrisonBreak.key.push(new Key(624, 338));
+      PrisonBreak.key.push(new Key(624, 622));
+      PrisonBreak.key.push(new Key(721, 480));
+    };
+
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
@@ -110,13 +130,7 @@ var stage2State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-          this.player.sprite.body.x = this.startingX;
-          this.player.sprite.body.y = this.startingY;
-          PrisonBreak.keyGroup.removeAll(true,false);
-          PrisonBreak.key = [];
-          PrisonBreak.key.push(new Key(624, 338));
-          PrisonBreak.key.push(new Key(624, 622));
-          PrisonBreak.key.push(new Key(721, 480));
+          fadePlayer();
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }
@@ -160,7 +174,7 @@ var stage2State = {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
-          PrisonBreak.game.state.start('stage5');
+          PrisonBreak.game.state.start('stage3');
         }
       }
     }

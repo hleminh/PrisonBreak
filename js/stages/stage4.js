@@ -96,6 +96,24 @@ var stage4State = {
       }
     }
 
+    function fadePlayer() {
+      PrisonBreak.game.add.tween(stage4State.player.sprite).to({
+        alpha: 0
+      }, 100, Phaser.Easing.Linear.None, true);
+      PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, rePosition, this);
+    };
+
+    function rePosition() {
+      stage4State.player.sprite.body.x = stage4State.startingX;
+      stage4State.player.sprite.body.y = stage4State.startingY;
+      PrisonBreak.game.add.tween(stage4State.player.sprite).to({
+        alpha: 1
+      }, 100, Phaser.Easing.Linear.None, true);
+      PrisonBreak.keyGroup.removeAll(true, false);
+      PrisonBreak.key = [];
+      PrisonBreak.key.push(new Key(960, 382));
+    };
+
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
       if (body) {
@@ -103,11 +121,8 @@ var stage4State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-          this.player.sprite.body.x = this.startingX;
-          this.player.sprite.body.y = this.startingY;
-          PrisonBreak.keyGroup.removeAll(true, false);
-          PrisonBreak.key = [];
-          PrisonBreak.key.push(new Key(960, 382));
+          fadePlayer();
+
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }

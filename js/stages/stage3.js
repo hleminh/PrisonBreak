@@ -102,6 +102,33 @@ var stage3State = {
       }
     }
 
+    function fadePlayer() {
+
+      PrisonBreak.game.add.tween(stage3State.player.sprite).to({
+        alpha: 0
+      }, 100, Phaser.Easing.Linear.None, true);
+      PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, rePosition, this);
+
+    };
+
+    function rePosition() {
+      stage3State.player.sprite.body.x = stage3State.startingX;
+      stage3State.player.sprite.body.y = stage3State.startingY;
+      PrisonBreak.game.add.tween(stage3State.player.sprite).to({
+        alpha: 1
+      }, 100, Phaser.Easing.Linear.None, true);
+      PrisonBreak.keyGroup.removeAll(true, false);
+      PrisonBreak.key = [];
+      PrisonBreak.key.push(new Key(166, 360));
+      PrisonBreak.key.push(new Key(166, 310));
+      PrisonBreak.key.push(new Key(216, 310));
+      PrisonBreak.key.push(new Key(216, 360));
+      PrisonBreak.key.push(new Key(935, 310));
+      PrisonBreak.key.push(new Key(985, 310));
+      PrisonBreak.key.push(new Key(985, 360));
+      PrisonBreak.key.push(new Key(935, 360));
+    }
+
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
       if (body) {
@@ -109,18 +136,9 @@ var stage3State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-          this.player.sprite.body.x = this.startingX;
-          this.player.sprite.body.y = this.startingY;
-          PrisonBreak.keyGroup.removeAll(true,false);
-          PrisonBreak.key = [];
-          PrisonBreak.key.push(new Key(166, 360));
-          PrisonBreak.key.push(new Key(166, 310));
-          PrisonBreak.key.push(new Key(216, 310));
-          PrisonBreak.key.push(new Key(216, 360));
-          PrisonBreak.key.push(new Key(935, 310));
-          PrisonBreak.key.push(new Key(985, 310));
-          PrisonBreak.key.push(new Key(985, 360));
-          PrisonBreak.key.push(new Key(935, 360));
+          fadePlayer();
+
+
 
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
@@ -173,8 +191,8 @@ var stage3State = {
   render() {
 
   }
-
 }
+
 
 function updateDeath(deathLabel, deathCount) {
   deathLabel.setText(deathCount.toString());
