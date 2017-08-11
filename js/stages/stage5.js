@@ -4,7 +4,7 @@ var stage5State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 120;
+    this.startingX = 180;
     this.startingY = 200;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
@@ -113,51 +113,51 @@ var stage5State = {
     PrisonBreak.saw.push(new Saw2(914, 240, 40, -Math.PI / 2));
     PrisonBreak.saw.push(new Saw2(914, 240, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(818, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(818, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(818, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(818, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(818, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(818, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(625, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(625, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(625, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(625, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(625, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(625, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(432, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(432, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(432, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(432, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(432, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(432, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(239, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(239, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(239, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(239, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(239, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(239, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, -Math.PI / 2));
 
     PrisonBreak.key = [];
-    PrisonBreak.key.push(new Key(743, 500));
-    PrisonBreak.key.push(new Key(552, 500));
-    PrisonBreak.key.push(new Key(166, 500));
-    PrisonBreak.key.push(new Key(360, 500));
+    PrisonBreak.key.push(new Key(743+48*2, 500));
+    PrisonBreak.key.push(new Key(552+48*2, 500));
+    PrisonBreak.key.push(new Key(166+48*2, 500));
+    PrisonBreak.key.push(new Key(360+48*2, 500));
 
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
