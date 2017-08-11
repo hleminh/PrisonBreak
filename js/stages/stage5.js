@@ -4,8 +4,8 @@ var stage5State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 100;
-    this.startingY = 100;
+    this.startingX = 70;
+    this.startingY = 160;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
