@@ -29,6 +29,7 @@ var stage6State = {
     PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
       font: '24px Arial',
@@ -71,60 +72,69 @@ var stage6State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw6(168, 120, 168, 316, 120, 268));
+    // saw left
+    PrisonBreak.saw.push(new Saw6(263, 310, 263, 407, 166, 310, 'left'));
+    PrisonBreak.saw.push(new Saw6(263, 455, 263, 407, 311, 455, 'left'));
+    PrisonBreak.saw.push(new Saw6(263, 600, 263, 407, 456, 600, 'left'));
+    // saw center
+    PrisonBreak.saw.push(new Saw6(551, 552, 407, 551, 408, 552, 'right'));
+    //saw right
+    PrisonBreak.saw.push(new Saw6(695, 310, 551, 695, 166, 310, 'right'));
+    PrisonBreak.saw.push(new Saw6(695, 455, 551, 695, 311, 455, 'right'));
+    PrisonBreak.saw.push(new Saw6(695, 600, 551, 695, 456, 600, 'right'));
 
+    PrisonBreak.key = [];
+    PrisonBreak.key.push(new Key(263, 600));
+    PrisonBreak.key.push(new Key(695, 166));
+    PrisonBreak.key.push(new Key(695, 600));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
+
+    var mapEndArray = endLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
+    this.endArr = [];
+
+    for (var i = 0; i < mapEndArray.length; i++) {
+      var myEndTile = mapEndArray[i];
+      if (myEndTile.index == 114) {
+        this.endArr.push(myEndTile);
+      }
+    }
 
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
       if (body) {
+        if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
+          body.sprite.destroy();
+        }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
           this.player.sprite.body.x = this.startingX;
           this.player.sprite.body.y = this.startingY;
+          PrisonBreak.keyGroup.removeAll(true,false);
+          PrisonBreak.key = [];
+          PrisonBreak.key.push(new Key(263, 600));
+          PrisonBreak.key.push(new Key(695, 166));
+          PrisonBreak.key.push(new Key(695, 600));
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
-        }
-        if (body.data.world.bodies[4].id == body.data.id || body.data.world.bodies[5].id == body.data.id) {
-          body.clearCollision(true);
-          PrisonBreak.game.state.start('win');
         }
       }
     }
 
     this.player.sprite.body.onBeginContact.add(playerContact, this);
 
-    // pause_label = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 100, 20, 'Pause', {
-    //   font: '24px Arial',
-    //   fill: '#fff'
-    // });
-    // pause_label.inputEnabled = true;
-    // pause_label.events.onInputUp.add(function() {
-    //   PrisonBreak.game.paused = true;
-    //   clickToContinue = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2, PrisonBreak.configs.GAME_HEIGHT - 150,
-    //     'Click Any Where to Continue', {
-    //       font: '30px Arial',
-    //       fill: '#fff'
-    //     }
-    //   );
-    //   clickToContinue.anchor.setTo(0.5, 0.5);
-    //
-    // });
-    // PrisonBreak.game.input.onDown.add(unpause, self);
-    //
-    // function unpause(event) {
-    //   if (PrisonBreak.game.paused) {
-    //     if (0 < event.x < PrisonBreak.configs.GAME_WIDTH && 0 < event.y < PrisonBreak.configs.GAME_HEIGHT) {
-    //       clickToContinue.destroy();
-    //       PrisonBreak.game.paused = false;
-    //     }
-    //   }
-    // }
-
 
   },
   update() {
+    if (PrisonBreak.keyGroup.countLiving() == 0) {
+      for (var myEndTile of this.endArr) {
+        if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
+          this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
+          PrisonBreak.game.state.start('win');
+        }
+      }
+    }
   },
   render() {
 
