@@ -4,8 +4,8 @@ var stage4State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 120;
-    this.startingY = 200;
+    this.startingX = 170;
+    this.startingY = 400;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
@@ -72,12 +72,14 @@ var stage4State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
+    PrisonBreak.saw.push(new Saw3(265, 360, 265, 550, 240));
+    PrisonBreak.saw.push(new Saw3(265, 410, 265, 550, 240));
+    PrisonBreak.saw.push(new Saw3(595, 360, 595, 880, 240));
+    PrisonBreak.saw.push(new Saw3(595, 410, 595, 880, 240));
 
     PrisonBreak.key = [];
-    PrisonBreak.key.push(new Key(743, 500));
-    PrisonBreak.key.push(new Key(552, 500));
-    PrisonBreak.key.push(new Key(166, 500));
-    PrisonBreak.key.push(new Key(360, 500));
+    PrisonBreak.key.push(new Key(960, 382));
+
 
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
@@ -103,12 +105,9 @@ var stage4State = {
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
           this.player.sprite.body.x = this.startingX;
           this.player.sprite.body.y = this.startingY;
-          PrisonBreak.keyGroup.removeAll(true,false);
+          PrisonBreak.keyGroup.removeAll(true, false);
           PrisonBreak.key = [];
-          PrisonBreak.key.push(new Key(743, 500));
-          PrisonBreak.key.push(new Key(552, 500));
-          PrisonBreak.key.push(new Key(166, 500));
-          PrisonBreak.key.push(new Key(360, 500));
+          PrisonBreak.key.push(new Key(960, 382));
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }

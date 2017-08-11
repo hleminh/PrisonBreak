@@ -196,10 +196,10 @@ var stage5State = {
           this.player.sprite.body.y = this.startingY;
           PrisonBreak.keyGroup.removeAll(true,false);
           PrisonBreak.key = [];
-          PrisonBreak.key.push(new Key(743, 500));
-          PrisonBreak.key.push(new Key(552, 500));
-          PrisonBreak.key.push(new Key(166, 500));
-          PrisonBreak.key.push(new Key(360, 500));
+          PrisonBreak.key.push(new Key(743+48*2, 500));
+          PrisonBreak.key.push(new Key(552+48*2, 500));
+          PrisonBreak.key.push(new Key(166+48*2, 500));
+          PrisonBreak.key.push(new Key(360+48*2, 500));
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }
