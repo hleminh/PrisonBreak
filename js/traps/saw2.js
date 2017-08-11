@@ -17,12 +17,11 @@ class Saw2 {
     this.sprite.update = this.update.bind(this);
   }
   update() {
+    this.sprite.body.rotation += this.SAW_SPEED * PrisonBreak.game.time.physicsElapsed;
 
     this.sprite.body.x = this.centerX + Math.cos(this.angle) * this.radius;
     this.sprite.body.y = this.centerY + Math.sin(this.angle) * this.radius;
     this.angle += this.SAW_SPEED * PrisonBreak.game.time.physicsElapsed;
-    // this.sprite.body.rotation = this.angle;
-    this.sprite.body.rotation += 30;
 
   }
 }
