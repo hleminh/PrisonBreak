@@ -1,7 +1,7 @@
 var PrisonBreak = {};
 PrisonBreak.configs = {
-  GAME_WIDTH: 20*48,
-  GAME_HEIGHT: 15*48,
+  GAME_WIDTH: 24*48,
+  GAME_HEIGHT: 17*48,
 };
 
 PrisonBreak.game = new Phaser.Game(PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT, Phaser.AUTO, 'gameDiv');
