@@ -20,7 +20,7 @@ class Saw6 {
     this.x2 = x2;
     this.sprite.body.setCircle(this.sprite.width / 2);
     if(this.side == 'center') this.DIRECT_VER_LEFT = true;
-    if(this.side == 'right') this.DIRECT_HOR_UP = true
+    if(this.side == 'right') this.DIRECT_HOR_UP = true;
 
   }
 
@@ -32,67 +32,44 @@ class Saw6 {
       this.sprite.body.velocity.x = this.SAW_SPEED;
       this.sprite.body.velocity.y = 0;
       if(this.sprite.x >= this.x2){
-        if (this.side == 'left' || this.side == 'center'){
-          this.DIRECT_VER_RIGHT = false;
-          this.DIRECT_HOR_DOWN = true;
-        } else {
-          this.DIRECT_VER_RIGHT = false;
-          this.DIRECT_HOR_UP = true;
-        }
-
+        if (this.side == 'left' || this.side == 'center') this.DIRECT_HOR_DOWN = true;
+        else this.DIRECT_HOR_UP = true;
+        this.DIRECT_VER_RIGHT = false;
       }
     }
     else if(this.DIRECT_HOR_DOWN){
       this.sprite.body.velocity.x = 0;
       this.sprite.body.velocity.y = this.SAW_SPEED;
-      this.sprite.x = this.x2;
       if (this.sprite.y >= this.y2) {
-        if (this.side == 'left' || this.side == 'center'){
-          this.DIRECT_VER_LEFT = true;
-          this.DIRECT_HOR_DOWN = false;
-        } else {
-          this.DIRECT_VER_RIGHT = true;
-          this.DIRECT_HOR_DOWN = false;
-        }
-
+        if (this.side == 'left' || this.side == 'center') this.DIRECT_VER_LEFT = true;
+        else this.DIRECT_VER_RIGHT = true;
+        this.DIRECT_HOR_DOWN = false;
       }
     }
     else if(this.DIRECT_VER_LEFT){
       this.sprite.body.velocity.x = -this.SAW_SPEED;
       this.sprite.body.velocity.y = 0;
       if(this.sprite.x <= this.x1){
-        if (this.side == 'left' || this.side == 'center'){
-          this.DIRECT_VER_LEFT = false;
-          this.DIRECT_HOR_UP = true;
-        } else {
-          this.DIRECT_VER_LEFT = false;
-          this.DIRECT_HOR_DOWN = true;
-        }
-
+        if (this.side == 'left' || this.side == 'center') this.DIRECT_HOR_UP = true;
+        else this.DIRECT_HOR_DOWN = true;
+        this.DIRECT_VER_LEFT = false;
       }
     }
     else if(this.DIRECT_HOR_UP){
       this.sprite.body.velocity.y = -this.SAW_SPEED;
       this.sprite.body.velocity.x = 0;
       if(this.sprite.y <= this.y1){
-        if (this.side == 'left' || this.side == 'center'){
-          this.DIRECT_HOR_UP = false;
-          this.DIRECT_VER_RIGHT = true;
-        } else{
-          this.DIRECT_HOR_UP = false;
-          this.DIRECT_VER_LEFT = true;
-        }
-
+        if (this.side == 'left' || this.side == 'center') this.DIRECT_VER_RIGHT = true;
+        else this.DIRECT_VER_LEFT = true;
+        this.DIRECT_HOR_UP = false;
       }
     }
     else {
       this.sprite.body.velocity.y = -this.SAW_SPEED;
       this.sprite.body.velocity.x = 0;
       if(this.sprite.y <= this.y1){
-        if (this.side == 'left' || this.side == 'center')
-          this.DIRECT_VER_RIGHT = true;
-        else
-          this.DIRECT_VER_LEFT = true;
+        if (this.side == 'left' || this.side == 'center') this.DIRECT_VER_RIGHT = true;
+        else this.DIRECT_VER_LEFT = true;
       }
     }
 
