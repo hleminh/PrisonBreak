@@ -76,15 +76,15 @@ var stage5State = {
     //TODO: add saw after check position
 
     // saw left
-    PrisonBreak.saw.push(new Saw6(263, 310, 263, 407, 166, 310, 'left'));
-    PrisonBreak.saw.push(new Saw6(263, 455, 263, 407, 311, 455, 'left'));
-    PrisonBreak.saw.push(new Saw6(263, 600, 263, 407, 456, 600, 'left'));
-    // saw center
-    PrisonBreak.saw.push(new Saw6(551, 552, 407, 551, 216, 552, 'center'));
-    //saw right
-    PrisonBreak.saw.push(new Saw6(695, 310, 551, 695, 166, 310, 'right'));
-    PrisonBreak.saw.push(new Saw6(695, 455, 551, 695, 311, 455, 'right'));
-    PrisonBreak.saw.push(new Saw6(695, 600, 551, 695, 456, 600, 'right'));
+    PrisonBreak.saw.push(new Saw6(359, 310, 359, 503, 166, 310, 'left'));
+    PrisonBreak.saw.push(new Saw6(359, 455, 359, 503, 311, 455, 'left'));
+    PrisonBreak.saw.push(new Saw6(359, 600, 359, 503, 456, 600, 'left'));
+    // // saw center
+    PrisonBreak.saw.push(new Saw6(647, 552, 503, 647, 216, 552, 'center'));
+    // //saw right
+    PrisonBreak.saw.push(new Saw6(791, 310, 647, 791, 166, 310, 'right'));
+    PrisonBreak.saw.push(new Saw6(791, 455, 647, 791, 311, 455, 'right'));
+    PrisonBreak.saw.push(new Saw6(791, 600, 647, 791, 456, 600, 'right'));
 
 
     PrisonBreak.key = [];
