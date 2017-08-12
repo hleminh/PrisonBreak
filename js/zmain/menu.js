@@ -21,10 +21,10 @@ var menuState = {
     menuLevelLable.events.onInputUp.addOnce(this.menuLevel, this);
 
   },
-  start: function(){
+  start: function() {
     PrisonBreak.game.state.start('stage1');
   },
-  menuLevel: function(){
+  menuLevel: function() {
     PrisonBreak.game.state.start('menuLevel');
   }
 }

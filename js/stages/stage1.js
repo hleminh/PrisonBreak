@@ -21,13 +21,12 @@ var stage1State = {
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
 
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
-    PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
+    this.wallLayerTiles = PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
     PrisonBreak.keyboard = PrisonBreak.game.input.keyboard;
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
-
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
       font: '24px Arial',
@@ -66,6 +65,19 @@ var stage1State = {
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
     });
+
+    this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
+    this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
+
+    for (var i = 0; i < this.wallLayerTiles.length; i++) {
+      this.wallLayerTiles[i].setMaterial(this.wallMaterial);
+    }
+
+    this.player.sprite.body.setMaterial(this.spriteMaterial);
+
+    this.contactMaterial = PrisonBreak.game.physics.p2.createContactMaterial(this.spriteMaterial, this.wallMaterial);
+    this.contactMaterial.restitution = 0;
+    this.contactMaterial.relaxation = 10000;
 
     PrisonBreak.saw = [];
     PrisonBreak.saw.push(new Saw1(360, 300, 310, 500, 300));

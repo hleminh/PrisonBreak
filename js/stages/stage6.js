@@ -22,7 +22,7 @@ var stage5State = {
     // map.setCollision(114, true, endLayer);
     // PrisonBreak.game.physics.p2.convertTilemap(map, endLayer);
     map.setCollision([1, 3, 2, 4, 33, 34, 35, 36, 69, 70, 115, 116], true, wallLayer);
-    PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
+    this.wallLayerTiles = PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
 
     groundLayer.resizeWorld();
 
@@ -68,6 +68,19 @@ var stage5State = {
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
     });
+
+    this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
+    this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
+
+    for (var i = 0; i < this.wallLayerTiles.length; i++) {
+      this.wallLayerTiles[i].setMaterial(this.wallMaterial);
+    }
+
+    this.player.sprite.body.setMaterial(this.spriteMaterial);
+
+    this.contactMaterial = PrisonBreak.game.physics.p2.createContactMaterial(this.spriteMaterial, this.wallMaterial);
+    this.contactMaterial.restitution = 0;
+    this.contactMaterial.relaxation = 10000;
 
     PrisonBreak.game.camera.follow(this.player.sprite);
 
