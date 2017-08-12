@@ -116,11 +116,13 @@ var stage2State = {
       PrisonBreak.game.add.tween(stage2State.player.sprite).to({
         alpha: 1
       }, 100, Phaser.Easing.Linear.None, true);
-      PrisonBreak.keyGroup.removeAll(true,false);
+      PrisonBreak.keyGroup.removeAll(true, false);
       PrisonBreak.key = [];
       PrisonBreak.key.push(new Key(624, 338));
       PrisonBreak.key.push(new Key(624, 622));
       PrisonBreak.key.push(new Key(721, 480));
+      stage2State.player.alive = true;
+
     };
 
 
@@ -130,6 +132,7 @@ var stage2State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+          this.player.alive = false;
           fadePlayer();
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);

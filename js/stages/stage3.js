@@ -107,6 +107,8 @@ var stage3State = {
       PrisonBreak.game.add.tween(stage3State.player.sprite).to({
         alpha: 0
       }, 100, Phaser.Easing.Linear.None, true);
+      // stage3State.player.sprite.body.x = stage3State.startingX;
+      // stage3State.player.sprite.body.y = stage3State.startingY;
       PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, rePosition, this);
 
     };
@@ -127,6 +129,7 @@ var stage3State = {
       PrisonBreak.key.push(new Key(985, 310));
       PrisonBreak.key.push(new Key(985, 360));
       PrisonBreak.key.push(new Key(935, 360));
+      stage3State.player.alive = true;
     }
 
 
@@ -136,10 +139,8 @@ var stage3State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+          this.player.alive = false;
           fadePlayer();
-
-
-
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }

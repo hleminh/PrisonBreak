@@ -125,6 +125,8 @@ var stage5State = {
       PrisonBreak.key.push(new Key(263 + 48 * 2, 600));
       PrisonBreak.key.push(new Key(695 + 48 * 2, 166));
       PrisonBreak.key.push(new Key(695 + 48 * 2, 600));
+      stage5State.player.alive = true;
+
     };
 
 
@@ -134,6 +136,7 @@ var stage5State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+          this.player.alive = false;
           fadePlayer();
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);

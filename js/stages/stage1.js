@@ -105,6 +105,8 @@ var stage1State = {
       PrisonBreak.game.add.tween(stage1State.player.sprite).to({
         alpha: 1
       }, 100, Phaser.Easing.Linear.None, true);
+      stage1State.player.alive = true;
+
     };
 
 
@@ -116,6 +118,7 @@ var stage1State = {
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
           // this.player.sprite.body.x = this.startingX;
           // this.player.sprite.body.y = this.startingY;
+          this.player.alive = false;
           fadePlayer();
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);

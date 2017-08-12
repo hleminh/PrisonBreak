@@ -113,51 +113,51 @@ var stage6State = {
     PrisonBreak.saw.push(new Saw2(914, 240, 40, -Math.PI / 2));
     PrisonBreak.saw.push(new Saw2(914, 240, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(818+48*2, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(818 + 48 * 2, 578, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(625+48*2, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(625 + 48 * 2, 578, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(432+48*2, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(432 + 48 * 2, 578, 80, -Math.PI / 2));
 
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 0, 0));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, Math.PI));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, Math.PI));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, 0));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, 0));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 40, -Math.PI / 2));
-    PrisonBreak.saw.push(new Saw2(239+48*2, 578, 80, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 0, 0));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 40, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 80, Math.PI));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 40, 0));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 80, 0));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 80, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 40, Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 40, -Math.PI / 2));
+    PrisonBreak.saw.push(new Saw2(239 + 48 * 2, 578, 80, -Math.PI / 2));
 
     PrisonBreak.key = [];
-    PrisonBreak.key.push(new Key(743+48*2, 500));
-    PrisonBreak.key.push(new Key(552+48*2, 500));
-    PrisonBreak.key.push(new Key(166+48*2, 500));
-    PrisonBreak.key.push(new Key(360+48*2, 500));
+    PrisonBreak.key.push(new Key(743 + 48 * 2, 500));
+    PrisonBreak.key.push(new Key(552 + 48 * 2, 500));
+    PrisonBreak.key.push(new Key(166 + 48 * 2, 500));
+    PrisonBreak.key.push(new Key(360 + 48 * 2, 500));
 
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
@@ -199,12 +199,14 @@ var stage6State = {
         alpha: 1
       }, 100, Phaser.Easing.Linear.None, true);
 
-      PrisonBreak.keyGroup.removeAll(true,false);
+      PrisonBreak.keyGroup.removeAll(true, false);
       PrisonBreak.key = [];
-      PrisonBreak.key.push(new Key(743+48*2, 500));
-      PrisonBreak.key.push(new Key(552+48*2, 500));
-      PrisonBreak.key.push(new Key(166+48*2, 500));
-      PrisonBreak.key.push(new Key(360+48*2, 500));
+      PrisonBreak.key.push(new Key(743 + 48 * 2, 500));
+      PrisonBreak.key.push(new Key(552 + 48 * 2, 500));
+      PrisonBreak.key.push(new Key(166 + 48 * 2, 500));
+      PrisonBreak.key.push(new Key(360 + 48 * 2, 500));
+      stage6State.player.alive = true;
+
     };
 
 
@@ -214,6 +216,7 @@ var stage6State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+          this.player.alive = false;
           fadePlayer();
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);

@@ -112,6 +112,8 @@ var stage4State = {
       PrisonBreak.keyGroup.removeAll(true, false);
       PrisonBreak.key = [];
       PrisonBreak.key.push(new Key(960, 382));
+      stage4State.player.alive = true;
+
     };
 
 
@@ -121,8 +123,8 @@ var stage4State = {
           body.sprite.destroy();
         }
         if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+          this.player.alive = false;
           fadePlayer();
-
           PrisonBreak.deathCount++;
           updateDeath(this.deathLabel, PrisonBreak.deathCount);
         }
