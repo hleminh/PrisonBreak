@@ -8,7 +8,7 @@ class Saw6 {
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.kinematic = true;
     this.sprite.body.clearCollision(true);
-    this.SAW_SPEED = 180;
+    this.SAW_SPEED = 300;
     this.DIRECT_HOR_UP;
     this.DIRECT_HOR_DOWN;
     this.DIRECT_VER_RIGHT;
@@ -26,8 +26,7 @@ class Saw6 {
 
 
   update() {
-    this.sprite.body.rotation += 30;
-
+    this.sprite.body.rotation += 30 * PrisonBreak.game.time.physicsElapsed;
     if(this.DIRECT_VER_RIGHT){
       this.sprite.body.velocity.x = this.SAW_SPEED;
       this.sprite.body.velocity.y = 0;
@@ -36,8 +35,7 @@ class Saw6 {
         else this.DIRECT_HOR_UP = true;
         this.DIRECT_VER_RIGHT = false;
       }
-    }
-    else if(this.DIRECT_HOR_DOWN){
+    } else if(this.DIRECT_HOR_DOWN){
       this.sprite.body.velocity.x = 0;
       this.sprite.body.velocity.y = this.SAW_SPEED;
       if (this.sprite.y >= this.y2) {
@@ -45,8 +43,7 @@ class Saw6 {
         else this.DIRECT_VER_RIGHT = true;
         this.DIRECT_HOR_DOWN = false;
       }
-    }
-    else if(this.DIRECT_VER_LEFT){
+    }else if(this.DIRECT_VER_LEFT){
       this.sprite.body.velocity.x = -this.SAW_SPEED;
       this.sprite.body.velocity.y = 0;
       if(this.sprite.x <= this.x1){
@@ -54,8 +51,7 @@ class Saw6 {
         else this.DIRECT_HOR_DOWN = true;
         this.DIRECT_VER_LEFT = false;
       }
-    }
-    else if(this.DIRECT_HOR_UP){
+    }else if(this.DIRECT_HOR_UP){
       this.sprite.body.velocity.y = -this.SAW_SPEED;
       this.sprite.body.velocity.x = 0;
       if(this.sprite.y <= this.y1){
@@ -63,8 +59,7 @@ class Saw6 {
         else this.DIRECT_VER_LEFT = true;
         this.DIRECT_HOR_UP = false;
       }
-    }
-    else {
+    }else {
       this.sprite.body.velocity.y = -this.SAW_SPEED;
       this.sprite.body.velocity.x = 0;
       if(this.sprite.y <= this.y1){

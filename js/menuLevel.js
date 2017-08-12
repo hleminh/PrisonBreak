@@ -57,5 +57,14 @@ var menuLevelState = {
     level6.events.onInputUp.addOnce(function(){
        PrisonBreak.game.state.start('stage6');
     }, this);
+
+    var level7 = PrisonBreak.game.add.text(150, 400, 'Level 7', {
+      font: '30px Arial',
+      fill: '#fff'
+    });
+    level7.inputEnabled = true;
+    level7.events.onInputUp.addOnce(function(){
+       PrisonBreak.game.state.start('stage7');
+    }, this);
   }
 }
