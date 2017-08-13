@@ -43,6 +43,45 @@ var stage1State = {
       PrisonBreak.game.state.start('menu');
     }, this);
 
+    if (PrisonBreak.sfxOn) {
+      var sfx = PrisonBreak.game.add.sprite(100, PrisonBreak.configs.GAME_HEIGHT - 42, 'sfx_on');
+    } else {
+      var sfx = PrisonBreak.game.add.sprite(100, PrisonBreak.configs.GAME_HEIGHT - 42, 'sfx_off');
+    }
+    sfx.inputEnabled = true;
+    sfx.events.onInputUp.add(function() {
+      if (PrisonBreak.sfxOn) {
+        console.log("sfx toggled off");
+        PrisonBreak.sfxOn = false;
+        sfx.loadTexture('sfx_off', 0);
+      } else {
+        console.log("sfx toggled on");
+        PrisonBreak.sfxOn = true;
+        sfx.loadTexture('sfx_on', 0);
+      }
+    }, this);
+
+    if (PrisonBreak.bgmOn) {
+      var bgm = PrisonBreak.game.add.sprite(100 + 50, PrisonBreak.configs.GAME_HEIGHT - 42, 'bgm_on');
+    } else {
+      var bgm = PrisonBreak.game.add.sprite(100 + 50, PrisonBreak.configs.GAME_HEIGHT - 42, 'bgm_off');
+    }
+    bgm.inputEnabled = true;
+    bgm.events.onInputUp.add(function() {
+      if (PrisonBreak.bgmOn) {
+        console.log("bgm toggled off");
+        PrisonBreak.bgmOn = false;
+        PrisonBreak.backgroundSound.mute = true;
+        bgm.loadTexture('bgm_off', 0);
+      } else {
+        console.log("bgm toggled on");
+        PrisonBreak.bgmOn = true;
+        PrisonBreak.backgroundSound.mute = false;
+        bgm.loadTexture('bgm_on', 0);
+      }
+    }, this);
+
+
     PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 18, 'DEATHS: ', {
       font: '24px Arial',
       fill: '#fff'
