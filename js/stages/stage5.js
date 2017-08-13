@@ -254,7 +254,12 @@ var stage6State = {
           }
           if (PrisonBreak.keyTrapGroup.children.indexOf(body.sprite) > -1) {
             body.sprite.loadTexture('saw_evil', 0, false);
-            this.player.alive.false;
+            this.player.alive = false;
+            this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+            this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+            this.emitter.on = true;
+            this.emitter.start(true, 500, 20);
+            this.player.alive = false;
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
             this.fadePlayer();
@@ -318,6 +323,11 @@ var stage6State = {
       if (this.player.sprite.body.x > myTrapTile.worldX && this.player.sprite.body.x < myTrapTile.worldX + 48 &&
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
           if (this.player.alive) {
+          this.player.alive = false;
+          this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+          this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+          this.emitter.on = true;
+          this.emitter.start(true, 500, 20);
           this.player.alive = false;
           this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
           this.fadePlayer();
