@@ -91,8 +91,8 @@ var stage3State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw3(500, 360, 160, 990, 190));
-    PrisonBreak.saw.push(new Saw3(500, 310, 160, 990, 190));
+    PrisonBreak.saw.push(new Saw3(500, 360, 160, 990, 185));
+    PrisonBreak.saw.push(new Saw3(500, 310, 160, 990, 185));
 
 
     PrisonBreak.key = [];

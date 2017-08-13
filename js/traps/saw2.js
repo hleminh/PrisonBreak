@@ -7,7 +7,7 @@ class Saw2 {
     this.sprite.body.kinematic = true;
     this.sprite.body.clearCollision(true);
     this.sprite.body.setCircle(this.sprite.width / 2);
-    this.SAW_SPEED = 2.0;
+    this.SAW_SPEED = 1.7;
     this.DIRECT;
     this.centerX = centerX;
     this.centerY = centerY;
