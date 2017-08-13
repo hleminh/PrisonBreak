@@ -28,6 +28,7 @@ var loadState = {
     PrisonBreak.game.load.image('background_lock', 'assets/bgs/lock_pg.png');
     PrisonBreak.game.load.image('background_unlock', 'assets/bgs/unlock_bg.png');
     PrisonBreak.game.load.image('background_menuLvl', 'assets/bgs/menuLvl_bg.png');
+    PrisonBreak.game.load.image('prisonHouse', 'assets/bgs/prisonhouse.png');
     PrisonBreak.game.load.audio('death','assets/sound/Player_Hit_1.wav');
     PrisonBreak.game.load.audio('saw','assets/sound/Item_13.wav');
     PrisonBreak.game.load.audio('coin','assets/sound/Coins.wav');
