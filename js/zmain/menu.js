@@ -2,7 +2,7 @@ var move = true;
 var menuState = {
   create: function() {
     PrisonBreak.game.stage.backgroundColor = '#ffffff';
-    PrisonBreak.player = PrisonBreak.game.add.sprite(250, PrisonBreak.configs.GAME_HEIGHT - 278, 'player' )
+    PrisonBreak.player = PrisonBreak.game.add.sprite(250, PrisonBreak.configs.GAME_HEIGHT - 278, 'player' );
     PrisonBreak.player.scale.setTo(3, 3);
     PrisonBreak.background = PrisonBreak.game.add.sprite(0, 0, 'background_lock');
 
