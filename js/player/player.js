@@ -18,17 +18,17 @@ class Player {
   }
 
   update() {
-    if(this.light) {
+    if (this.light) {
       this.shadowTexture.context.fillStyle = 'rgb(100, 100, 100)';
-      this.shadowTexture.context.fillRect(0, 0, PrisonBreak.game.width, PrisonBreak.game.height);
+      this.shadowTexture.context.fillRect(0, 48, PrisonBreak.game.width, PrisonBreak.game.height - 48);
       var gradient = this.shadowTexture.context.createRadialGradient(
-         this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS * 0.75,
-         this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS);
+        this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS * 0.75,
+        this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
       gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
       this.shadowTexture.context.beginPath();
       this.shadowTexture.context.fillStyle = gradient;
-      this.shadowTexture.context.arc(this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS, 0, Math.PI*2);
+      this.shadowTexture.context.arc(this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS, 0, Math.PI * 2);
       this.shadowTexture.context.fill();
       this.shadowTexture.dirty = true;
     }
