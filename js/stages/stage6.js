@@ -4,7 +4,10 @@ var stage5State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    this.startingX = 315+ 48 * 2;
+    if (! PrisonBreak.backgroundSound.isPlaying) {
+      PrisonBreak.backgroundSound.play();
+    }
+    this.startingX = 315 + 48 * 2;
     this.startingY = 215;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
@@ -46,7 +49,7 @@ var stage5State = {
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH/2 - 45, 18, 'STAGE 5', {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 5', {
       font: '24px Arial',
       fill: '#fff'
     });
@@ -133,7 +136,7 @@ var stage5State = {
         alpha: 1
       }, 100, Phaser.Easing.Linear.None, true);
 
-      PrisonBreak.keyGroup.removeAll(true,false);
+      PrisonBreak.keyGroup.removeAll(true, false);
       PrisonBreak.key = [];
       PrisonBreak.key.push(new Key(263 + 48 * 2, 600));
       PrisonBreak.key.push(new Key(695 + 48 * 2, 166));
@@ -143,16 +146,21 @@ var stage5State = {
     };
 
 
-    var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
+    var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
-        if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
-          body.sprite.destroy();
-        }
-        if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-          this.player.alive = false;
-          fadePlayer();
-          PrisonBreak.deathCount++;
-          updateDeath(this.deathLabel, PrisonBreak.deathCount);
+        if (this.player.alive) {
+          if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
+            body.sprite.destroy();
+            PrisonBreak.coinSound.play();
+          }
+          if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) {
+            this.player.alive = false;
+            PrisonBreak.sawSound.play();
+            PrisonBreak.deathSound.play();
+            fadePlayer();
+            PrisonBreak.deathCount++;
+            updateDeath(this.deathLabel, PrisonBreak.deathCount);
+          }
         }
       }
     }

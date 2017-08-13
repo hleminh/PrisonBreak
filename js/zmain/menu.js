@@ -5,6 +5,12 @@ var menuState = {
       fill: "#ffffff"
     });
 
+
+    // PrisonBreak.deathSound.allowMutiple = false;
+    // PrisonBreak.sawSound.allowMutiple = false;
+    // PrisonBreak.coinSound.allowMutiple = false;
+    // PrisonBreak.backgroundSound.allowMutiple = false;
+
     PrisonBreak.deathCount = 0;
     var startLabel = PrisonBreak.game.add.text(150, PrisonBreak.configs.GAME_HEIGHT - 300, 'Play Game', {
       font: "50px Arial",
@@ -23,6 +29,9 @@ var menuState = {
   },
   start: function() {
     PrisonBreak.game.state.start('stage1');
+    if (! PrisonBreak.backgroundSound.isPlaying) {
+      PrisonBreak.backgroundSound.play();
+    }
   },
   menuLevel: function() {
     PrisonBreak.game.state.start('menuLevel');

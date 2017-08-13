@@ -4,6 +4,9 @@ var stage1State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
+    if (! PrisonBreak.backgroundSound.isPlaying) {
+      PrisonBreak.backgroundSound.play();
+    }
     this.startingX = 220;
     this.startingY = 375;
 
@@ -127,13 +130,17 @@ var stage1State = {
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
-        if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-          // this.player.sprite.body.x = this.startingX;
-          // this.player.sprite.body.y = this.startingY;
-          this.player.alive = false;
-          fadePlayer();
-          PrisonBreak.deathCount++;
-          updateDeath(this.deathLabel, PrisonBreak.deathCount);
+        if (this.player.alive) {
+          if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+            // this.player.sprite.body.x = this.startingX;
+            // this.player.sprite.body.y = this.startingY;
+            this.player.alive = false;
+            PrisonBreak.sawSound.play();
+            PrisonBreak.deathSound.play();
+            fadePlayer();
+            PrisonBreak.deathCount++;
+            updateDeath(this.deathLabel, PrisonBreak.deathCount);
+          }
         }
       }
     }

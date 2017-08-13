@@ -23,10 +23,20 @@ var loadState = {
     PrisonBreak.game.load.image('saw4', 'assets/saws/saw_4.png');
     PrisonBreak.game.load.image('saw5', 'assets/saws/saw_5.png');
     PrisonBreak.game.load.image('saw6', 'assets/saws/saw_6.png');
+    PrisonBreak.game.load.audio('death','assets/sound/Player_Hit_1.wav');
+    PrisonBreak.game.load.audio('saw','assets/sound/Item_13.wav');
+    PrisonBreak.game.load.audio('coin','assets/sound/Coins.wav');
+    PrisonBreak.game.load.audio('background','assets/sound/background.ogg');
 
   },
 
   create: function() {
+    PrisonBreak.deathSound = PrisonBreak.game.add.audio('death');
+    PrisonBreak.sawSound = PrisonBreak.game.add.audio('saw');
+    PrisonBreak.coinSound = PrisonBreak.game.add.audio('coin');
+    PrisonBreak.backgroundSound = PrisonBreak.game.add.audio('background');
+    PrisonBreak.backgroundSound.loop = true;
+    PrisonBreak.backgroundSound.volume = 0.3;
     PrisonBreak.game.state.start('menu');
   }
 };

@@ -4,6 +4,9 @@ var stage4State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
+    if (! PrisonBreak.backgroundSound.isPlaying) {
+      PrisonBreak.backgroundSound.play();
+    }
     this.startingX = 170;
     this.startingY = 400;
 
@@ -132,14 +135,19 @@ var stage4State = {
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) { //https://phaser.io/examples/v2/p2-physics/contact-events
       if (body) {
-        if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
-          body.sprite.destroy();
-        }
-        if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-          this.player.alive = false;
-          fadePlayer();
-          PrisonBreak.deathCount++;
-          updateDeath(this.deathLabel, PrisonBreak.deathCount);
+        if (this.player.alive) {
+          if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
+            body.sprite.destroy();
+            PrisonBreak.coinSound.play();
+          }
+          if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+            this.player.alive = false;
+            PrisonBreak.sawSound.play();
+            PrisonBreak.deathSound.play();
+            fadePlayer();
+            PrisonBreak.deathCount++;
+            updateDeath(this.deathLabel, PrisonBreak.deathCount);
+          }
         }
       }
     }
