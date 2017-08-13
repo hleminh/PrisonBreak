@@ -33,6 +33,7 @@ var stage2State = {
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.lightGroup = PrisonBreak.game.add.group();
 
     // PrisonBreak.keyGroup.enableBody = true;
 
@@ -110,6 +111,7 @@ var stage2State = {
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.lightGroup);
 
     var mapEndArray = endLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
     this.endArr = [];
@@ -173,7 +175,7 @@ var stage2State = {
       }
     }
 
-    this.killTrap = function () {
+    this.killTrap = function() {
       this.sprite.destroy();
     }
 
@@ -212,11 +214,11 @@ var stage2State = {
     for (var myTrapTile of this.trapArr) {
       if (this.player.sprite.body.x > myTrapTile.worldX && this.player.sprite.body.x < myTrapTile.worldX + 48 &&
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
-          if (this.player.alive) {
+        if (this.player.alive) {
           this.player.alive = false;
           this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
           this.fadePlayer();
-          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5 , this.killTrap, this);
+          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killTrap, this);
         }
       }
     }
