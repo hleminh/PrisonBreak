@@ -39,7 +39,7 @@ var stage6State = {
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyTrapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.lightGroup = PrisonBreak.game.add.group();
-    
+
 
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
@@ -351,7 +351,7 @@ var stage6State = {
 
     for (var myTile of this.checkArr) {
       if (this.player.sprite.body.x > myTile.worldX && this.player.sprite.body.x < myTile.worldX + 48 &&
-        this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48) {
+        this.player.sprite.body.y > myTile.worldY && this.player.sprite.body.y < myTile.worldY + 48 && this.player.alive) {
         this.startingX = myTile.worldX + myTile.centerX; //Tile X ở góc trái trong khi anchor của player ở giữa nên phải cộng thêm để cho player vào giữa tile
         this.startingY = myTile.worldY + myTile.centerY;
       }
