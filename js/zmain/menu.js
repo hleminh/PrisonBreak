@@ -5,6 +5,14 @@ var menuState = {
     PrisonBreak.player = PrisonBreak.game.add.sprite(250, PrisonBreak.configs.GAME_HEIGHT - 278, 'player' );
     PrisonBreak.player.scale.setTo(3, 3);
     PrisonBreak.background = PrisonBreak.game.add.sprite(0, 0, 'background_lock');
+    PrisonBreak.highScore = [];
+    PrisonBreak.highScore.push({death : null});
+    PrisonBreak.highScore.push({death : null});
+    PrisonBreak.highScore.push({death : null});
+    PrisonBreak.highScore.push({death : null});
+    PrisonBreak.highScore.push({death : null});
+    PrisonBreak.highScore.push({death : null});
+    PrisonBreak.highScore.push({death : null});
 
     PrisonBreak.deathCount = 0;
     move = true;
@@ -84,7 +92,7 @@ var menuState = {
 
   },
   fadeComplete: function () {
-    PrisonBreak.game.state.start('win');
+    PrisonBreak.game.state.start('stage1');
     if (! PrisonBreak.backgroundSound.isPlaying) {
       PrisonBreak.backgroundSound.play();
     }

@@ -257,6 +257,8 @@ var stage4State = {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48 && this.player.alive) {
+            PrisonBreak.highScore[3].death = PrisonBreak.deathCount - PrisonBreak.highScore[0].death -
+            PrisonBreak.highScore[1].death - PrisonBreak.highScore[2].death;
           PrisonBreak.game.state.start('stage5');
         }
       }
@@ -276,6 +278,8 @@ var stage4State = {
           this.player.alive = false;
           this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
           this.fadePlayer();
+          PrisonBreak.deathCount++;
+          updateDeath(this.deathLabel, PrisonBreak.deathCount);
           PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killTrap, this);
         }
       }

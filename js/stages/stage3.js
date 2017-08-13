@@ -273,6 +273,8 @@ var stage3State = {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
+
+          PrisonBreak.highScore[2].death = PrisonBreak.deathCount - PrisonBreak.highScore[0].death - PrisonBreak.highScore[1].death;
           PrisonBreak.game.state.start('stage4');
         }
       }

@@ -52,7 +52,7 @@ class Player {
     }
     if (this.light && this.setup) {
       this.shadowTexture.context.fillStyle = 'rgb(0, 0, 0)';
-      this.shadowTexture.context.fillRect(0, 48, PrisonBreak.game.width, PrisonBreak.game.height - 48);
+      this.shadowTexture.context.fillRect(0, 48, PrisonBreak.game.width, PrisonBreak.game.height - 96);
       var gradient = this.shadowTexture.context.createRadialGradient(
         this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS * 0.1,
         this.sprite.body.x, this.sprite.body.y, this.LIGHT_RADIUS);
