@@ -27,21 +27,21 @@ var menuLevelState = {
        PrisonBreak.game.state.start('stage2');
     }, this);
 
-    var level6 = PrisonBreak.game.add.text(625, 250, 'Level 3', {
+    var level3 = PrisonBreak.game.add.text(625, 250, 'Level 3', {
       font: '30px Arial',
       fill: '#fff'
     });
-    level6.inputEnabled = true;
-    level6.events.onInputUp.addOnce(function(){
+    level3.inputEnabled = true;
+    level3.events.onInputUp.addOnce(function(){
        PrisonBreak.game.state.start('stage3');
     }, this);
 
-    var level6 = PrisonBreak.game.add.text(825, 250, 'Level 4', {
+    var level4 = PrisonBreak.game.add.text(825, 250, 'Level 4', {
       font: '30px Arial',
       fill: '#fff'
     });
-    level6.inputEnabled = true;
-    level6.events.onInputUp.addOnce(function(){
+    level4.inputEnabled = true;
+    level4.events.onInputUp.addOnce(function(){
        PrisonBreak.game.state.start('stage4');
     }, this);
 
