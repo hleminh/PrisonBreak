@@ -121,9 +121,6 @@ var stage7State = {
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.lightGroup);
 
-
-
-
     var mapArray = checkLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
     this.checkArr = [];
 

@@ -73,7 +73,7 @@ var stage2State = {
       left: Phaser.Keyboard.LEFT,
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
-    }, true);
+    }, false);
 
     this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
     this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
