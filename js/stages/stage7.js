@@ -35,6 +35,8 @@ var stage7State = {
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.lightGroup = PrisonBreak.game.add.group();
+
 
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
@@ -73,7 +75,7 @@ var stage7State = {
       left: Phaser.Keyboard.LEFT,
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
-    }, false);
+    }, true);
 
     PrisonBreak.game.camera.follow(this.player.sprite);
 
@@ -117,6 +119,8 @@ var stage7State = {
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.lightGroup);
+
 
 
 

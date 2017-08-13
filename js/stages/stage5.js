@@ -76,7 +76,7 @@ var stage6State = {
       left: Phaser.Keyboard.LEFT,
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
-    }, false);
+    }, true);
 
     this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
     this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
@@ -188,6 +188,8 @@ var stage6State = {
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyTrapGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.lightGroup);
+
 
 
     var mapArray = checkLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
