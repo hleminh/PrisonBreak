@@ -4,7 +4,7 @@ var stage1State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    if (! PrisonBreak.backgroundSound.isPlaying) {
+    if (!PrisonBreak.backgroundSound.isPlaying) {
       PrisonBreak.backgroundSound.play();
     }
     this.startingX = 220;
@@ -64,13 +64,14 @@ var stage1State = {
     endGroup.add(endLayer);
 
     this.player = new Player(this.startingX, this.startingY, {
-      up: Phaser.Keyboard.UP,
-      down: Phaser.Keyboard.DOWN,
-      left: Phaser.Keyboard.LEFT,
-      right: Phaser.Keyboard.RIGHT,
-      player_speed: 180},
+        up: Phaser.Keyboard.UP,
+        down: Phaser.Keyboard.DOWN,
+        left: Phaser.Keyboard.LEFT,
+        right: Phaser.Keyboard.RIGHT,
+        player_speed: 180
+      },
       true
-      );
+    );
 
     this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
     this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
@@ -136,13 +137,17 @@ var stage1State = {
         alpha: 1
       }, 100, Phaser.Easing.Linear.None, true);
       stage1State.player.alive = true;
-
+      this.emitter.on = false;
     };
 
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
         if (this.player.alive) {
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
+            this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+            this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+            this.emitter.on = true;
+            this.emitter.start(true, 500, 20);
             this.player.alive = false;
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
@@ -156,7 +161,7 @@ var stage1State = {
 
     this.player.sprite.body.onBeginContact.add(playerContact, this);
 
-    this.killTrap = function () {
+    this.killTrap = function() {
       this.sprite.destroy();
     }
 
@@ -174,11 +179,11 @@ var stage1State = {
     for (var myTrapTile of this.trapArr) {
       if (this.player.sprite.body.x > myTrapTile.worldX && this.player.sprite.body.x < myTrapTile.worldX + 48 &&
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
-          if (this.player.alive) {
+        if (this.player.alive) {
           this.player.alive = false;
           this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
           this.fadePlayer();
-          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5 , this.killTrap, this);
+          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killTrap, this);
         }
       }
     }

@@ -152,6 +152,7 @@ var stage2State = {
       PrisonBreak.key.push(new Key(624, 622));
       PrisonBreak.key.push(new Key(721, 480));
       stage2State.player.alive = true;
+      this.emitter.on = false;
 
     };
 
@@ -165,6 +166,10 @@ var stage2State = {
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) {
             this.player.alive = false;
+            this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+            this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+            this.emitter.on = true;
+            this.emitter.start(true, 500, 20);
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
             this.fadePlayer();

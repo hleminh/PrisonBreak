@@ -71,7 +71,7 @@ var stage3State = {
       left: Phaser.Keyboard.LEFT,
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
-    });
+    }, false);
 
     this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
     this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
@@ -121,7 +121,7 @@ var stage3State = {
       }
     }
 
-    function fadePlayer() {
+    this.fadePlayer = function() {
 
       PrisonBreak.game.add.tween(stage3State.player.sprite).to({
         alpha: 0
@@ -149,6 +149,7 @@ var stage3State = {
       PrisonBreak.key.push(new Key(985, 360));
       PrisonBreak.key.push(new Key(935, 360));
       stage3State.player.alive = true;
+      this.emitter.on = false;
     }
 
 
@@ -164,15 +165,19 @@ var stage3State = {
             this.player.alive.false;
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
-            fadePlayer();
+            this.fadePlayer();
             PrisonBreak.deathCount++;
             updateDeath(this.deathLabel, PrisonBreak.deathCount);
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
             this.player.alive = false;
+            this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+            this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+            this.emitter.on = true;
+            this.emitter.start(true, 500, 20);
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
-            fadePlayer();
+            this.fadePlayer();
             PrisonBreak.deathCount++;
             updateDeath(this.deathLabel, PrisonBreak.deathCount);
           }

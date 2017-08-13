@@ -23,7 +23,7 @@ var stage4State = {
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     trapLayer = map.createLayer('Tile Layer 6', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
-    
+
 
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     this.wallLayerTiles = PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
@@ -72,7 +72,7 @@ var stage4State = {
       left: Phaser.Keyboard.LEFT,
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
-    });
+    }, false);
 
     this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
     this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
@@ -141,7 +141,7 @@ var stage4State = {
       PrisonBreak.key = [];
       PrisonBreak.key.push(new Key(960, 382));
       stage4State.player.alive = true;
-
+      this.emitter.on = false;
     };
 
 
@@ -154,6 +154,10 @@ var stage4State = {
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
             this.player.alive = false;
+            this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+            this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+            this.emitter.on = true;
+            this.emitter.start(true, 500, 20);
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
             this.fadePlayer();

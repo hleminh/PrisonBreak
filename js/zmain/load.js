@@ -29,6 +29,11 @@ var loadState = {
     PrisonBreak.game.load.audio('saw','assets/sound/Item_13.wav');
     PrisonBreak.game.load.audio('coin','assets/sound/Coins.wav');
     PrisonBreak.game.load.audio('background','assets/sound/background.ogg');
+    PrisonBreak.game.load.image('blood1', 'assets/blood/blood1.png');
+    PrisonBreak.game.load.image('blood2', 'assets/blood/blood2.png');
+    PrisonBreak.game.load.image('blood3', 'assets/blood/blood3.png');
+    PrisonBreak.game.load.image('blood4', 'assets/blood/blood4.png');
+    PrisonBreak.game.load.image('blood5', 'assets/blood/blood5.png');
 
   },
 

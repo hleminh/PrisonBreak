@@ -10,21 +10,23 @@ class Player {
     this.light = bool;
     this.setup = false;
 
-    PrisonBreak.game.time.events.repeat(Phaser.Timer.SECOND * 5, 1, function() {
-      this.LIGHT_RADIUS = 100;
-      this.shadowTexture = PrisonBreak.game.add.bitmapData(PrisonBreak.game.width, PrisonBreak.game.height);
-      var lightSprite = PrisonBreak.lightGroup.create(0, 0, this.shadowTexture);
-      lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
-      this.setup = true;
-    }, this);
-
-    this.LoopEvent = function() {
-      this.LIGHT_RADIUS = 300;
-      PrisonBreak.game.time.events.repeat(Phaser.Timer.SECOND * 10, 1, this.lightup = function() {
-        this.LIGHT_RADIUS = 100
+    if (bool) {
+      PrisonBreak.game.time.events.repeat(Phaser.Timer.SECOND * 5, 1, function() {
+        this.LIGHT_RADIUS = 100;
+        this.shadowTexture = PrisonBreak.game.add.bitmapData(PrisonBreak.game.width, PrisonBreak.game.height);
+        var lightSprite = PrisonBreak.lightGroup.create(0, 0, this.shadowTexture);
+        lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
+        this.setup = true;
       }, this);
+
+      this.LoopEvent = function() {
+        this.LIGHT_RADIUS = 300;
+        PrisonBreak.game.time.events.repeat(Phaser.Timer.SECOND * 10, 1, this.lightup = function() {
+          this.LIGHT_RADIUS = 100
+        }, this);
+      }
+      PrisonBreak.game.time.events.loop(Phaser.Timer.SECOND * 4, this.LoopEvent, this);
     }
-    PrisonBreak.game.time.events.loop(Phaser.Timer.SECOND * 4, this.LoopEvent, this);
   }
 
   update() {
