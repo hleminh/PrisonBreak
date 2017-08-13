@@ -8,7 +8,7 @@ class Saw6 {
     this.sprite.anchor = new Phaser.Point(0.5, 0.5);
     this.sprite.body.kinematic = true;
     this.sprite.body.clearCollision(true);
-    this.SAW_SPEED = 300;
+    this.SAW_SPEED = 180;
     this.DIRECT_HOR_UP;
     this.DIRECT_HOR_DOWN;
     this.DIRECT_VER_RIGHT;
