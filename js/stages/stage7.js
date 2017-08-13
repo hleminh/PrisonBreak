@@ -169,6 +169,7 @@ var stage7State = {
       PrisonBreak.key = [];
       PrisonBreak.key.push(new Key(383 + 48 * 12, 335 + 48 * 6));
       stage7State.player.alive = true;
+      this.emitter.on = false;
     };
 
 
@@ -181,6 +182,10 @@ var stage7State = {
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
             this.player.alive = false;
+            this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+            this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+            this.emitter.on = true;
+            this.emitter.start(true, 500, 20);
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
             this.fadePlayer();
@@ -221,6 +226,10 @@ var stage7State = {
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
           if (this.player.alive) {
           this.player.alive = false;
+          this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+          this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+          this.emitter.on = true;
+          this.emitter.start(true, 500, 20);
           this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
           this.fadePlayer();
           PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5 , this.killTrap, this);
