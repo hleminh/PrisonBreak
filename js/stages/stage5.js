@@ -38,6 +38,8 @@ var stage6State = {
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyTrapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.lightGroup = PrisonBreak.game.add.group();
+    
 
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {

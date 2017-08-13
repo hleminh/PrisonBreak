@@ -36,7 +36,8 @@ var stage5State = {
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyTrapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
-    PrisonBreak.game.world.bringToTop(PrisonBreak.lightGroup);
+    PrisonBreak.lightGroup = PrisonBreak.game.add.group();
+    
 
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
@@ -116,6 +117,8 @@ var stage5State = {
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.lightGroup);
+
 
     var mapEndArray = endLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
     this.endArr = [];
