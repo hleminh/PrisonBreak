@@ -20,11 +20,11 @@ class Player {
 
     this.LoopEvent = function() {
       this.LIGHT_RADIUS = 300;
-      PrisonBreak.game.time.events.repeat(Phaser.Timer.SECOND * 0.5, 1, this.lightup = function() {
+      PrisonBreak.game.time.events.repeat(Phaser.Timer.SECOND * 10, 1, this.lightup = function() {
         this.LIGHT_RADIUS = 100
       }, this);
     }
-    PrisonBreak.game.time.events.loop(Phaser.Timer.SECOND * 3, this.LoopEvent, this);
+    PrisonBreak.game.time.events.loop(Phaser.Timer.SECOND * 4, this.LoopEvent, this);
   }
 
   update() {
