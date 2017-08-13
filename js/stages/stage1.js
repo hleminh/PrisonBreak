@@ -156,7 +156,6 @@ var stage1State = {
 
     this.killTrap = function () {
       this.sprite.destroy();
-
     }
 
   },
@@ -164,7 +163,7 @@ var stage1State = {
     if (PrisonBreak.keyGroup.countLiving() == 0) {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
-          this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
+          this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48 && this.player.alive) {
           PrisonBreak.game.state.start('stage2');
         }
       }
@@ -174,15 +173,11 @@ var stage1State = {
       if (this.player.sprite.body.x > myTrapTile.worldX && this.player.sprite.body.x < myTrapTile.worldX + 48 &&
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
           if (this.player.alive) {
-          // console.log(PrisonBreak.game.time.totalElapsedSeconds());
           this.player.alive = false;
           this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
           this.fadePlayer();
           PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5 , this.killTrap, this);
-
         }
-      } else {
-        // PrisonBreak.game.time.reset();
       }
     }
   },

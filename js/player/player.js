@@ -18,6 +18,18 @@ class Player {
   }
 
   update() {
+    if (this.alive) {
+      if (PrisonBreak.keyboard.isDown(this.configs.left)) {
+        this.sprite.body.velocity.x = -this.configs.player_speed;
+      } else if (PrisonBreak.keyboard.isDown(this.configs.right)) {
+        this.sprite.body.velocity.x = this.configs.player_speed;
+      } else this.sprite.body.velocity.x = 0;
+      if (PrisonBreak.keyboard.isDown(this.configs.up)) {
+        this.sprite.body.velocity.y = -this.configs.player_speed;
+      } else if (PrisonBreak.keyboard.isDown(this.configs.down)) {
+        this.sprite.body.velocity.y = this.configs.player_speed;
+      } else this.sprite.body.velocity.y = 0;
+    }
     if (this.light) {
       this.shadowTexture.context.fillStyle = 'rgb(100, 100, 100)';
       this.shadowTexture.context.fillRect(0, 48, PrisonBreak.game.width, PrisonBreak.game.height - 48);
@@ -33,18 +45,7 @@ class Player {
       this.shadowTexture.dirty = true;
     }
 
-    if (this.alive) {
-      if (PrisonBreak.keyboard.isDown(this.configs.left)) {
-        this.sprite.body.velocity.x = -this.configs.player_speed;
-      } else if (PrisonBreak.keyboard.isDown(this.configs.right)) {
-        this.sprite.body.velocity.x = this.configs.player_speed;
-      } else this.sprite.body.velocity.x = 0;
-      if (PrisonBreak.keyboard.isDown(this.configs.up)) {
-        this.sprite.body.velocity.y = -this.configs.player_speed;
-      } else if (PrisonBreak.keyboard.isDown(this.configs.down)) {
-        this.sprite.body.velocity.y = this.configs.player_speed;
-      } else this.sprite.body.velocity.y = 0;
-    }
+
 
   }
 }
