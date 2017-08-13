@@ -1,4 +1,4 @@
-var move = true;
+var move;
 var menuState = {
   create: function() {
     PrisonBreak.game.stage.backgroundColor = '#ffffff';
@@ -7,7 +7,7 @@ var menuState = {
     PrisonBreak.background = PrisonBreak.game.add.sprite(0, 0, 'background_lock');
 
     PrisonBreak.deathCount = 0;
-
+    move = true;
     var nameLabel = PrisonBreak.game.add.text(300, 70, 'PRISON BREAK', {
       font: "70px Arial",
       fill: "#ffffff"
