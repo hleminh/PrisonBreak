@@ -50,7 +50,7 @@ var stage7State = {
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 6', {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 7', {
       font: '24px Arial',
       fill: '#fff'
     });
