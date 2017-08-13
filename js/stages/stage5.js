@@ -4,7 +4,7 @@ var stage6State = {
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
   },
   create: function() {
-    if (! PrisonBreak.backgroundSound.isPlaying) {
+    if (!PrisonBreak.backgroundSound.isPlaying) {
       PrisonBreak.backgroundSound.play();
     }
     this.startingX = 180;
@@ -25,6 +25,8 @@ var stage6State = {
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     checkLayer = map.createLayer('Tile Layer 5', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
+    trapLayer = map.createLayer('Tile Layer 6', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
+
 
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     this.wallLayerTiles = PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
@@ -208,7 +210,17 @@ var stage6State = {
       }
     }
 
-    function fadePlayer() {
+    var mapTrapArray = trapLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
+    this.trapArr = [];
+
+    for (var i = 0; i < mapTrapArray.length; i++) {
+      var myTrapTile = mapTrapArray[i];
+      if (myTrapTile.index == 407) {
+        this.trapArr.push(myTrapTile);
+      }
+    }
+
+    this.fadePlayer = function() {
       PrisonBreak.game.add.tween(stage6State.player.sprite).to({
         alpha: 0
       }, 100, Phaser.Easing.Linear.None, true);
@@ -240,12 +252,12 @@ var stage6State = {
             body.sprite.destroy();
             PrisonBreak.coinSound.play();
           }
-          if (PrisonBreak.keyTrapGroup.children.indexOf(body.sprite) > -1){
+          if (PrisonBreak.keyTrapGroup.children.indexOf(body.sprite) > -1) {
             body.sprite.loadTexture('saw_evil', 0, false);
             this.player.alive.false;
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
-            fadePlayer();
+            this.fadePlayer();
             PrisonBreak.deathCount++;
             updateDeath(this.deathLabel, PrisonBreak.deathCount);
           }
@@ -259,6 +271,10 @@ var stage6State = {
           }
         }
       }
+    }
+
+    this.killTrap = function () {
+      this.sprite.destroy();
     }
 
     this.player.sprite.body.onBeginContact.add(playerContact, this);
@@ -293,10 +309,23 @@ var stage6State = {
 
   },
   update() {
+
+    for (var myTrapTile of this.trapArr) {
+      if (this.player.sprite.body.x > myTrapTile.worldX && this.player.sprite.body.x < myTrapTile.worldX + 48 &&
+        this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
+          if (this.player.alive) {
+          this.player.alive = false;
+          this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
+          this.fadePlayer();
+          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5 , this.killTrap, this);
+        }
+      }
+    }
+
     if (PrisonBreak.keyGroup.countLiving() == 0) {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
-          this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
+          this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48 && this.player.alive) {
           PrisonBreak.game.state.start('stage7');
         }
       }
