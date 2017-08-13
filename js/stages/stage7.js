@@ -73,6 +73,7 @@ var stage7State = {
     PrisonBreak.game.camera.follow(this.player.sprite);
 
     PrisonBreak.saw = [];
+    // trap move in rectangle
     PrisonBreak.saw.push(new Saw6(168, 360, 168, 216, 312, 360, 'left'));
     PrisonBreak.saw.push(new Saw6(168+48*12, 360-48*2, 168+48*12, 216+48*12, 312-48*2, 360-48*2, 'left'));
     PrisonBreak.saw.push(new Saw6(168+48*12, 360+48*4, 168+48*12, 216+48*12, 312+48*4, 360+48*4, 'left'));
@@ -84,11 +85,34 @@ var stage7State = {
     PrisonBreak.saw.push(new Saw6(360+48*4, 312-48*2, 360+48*4, 408+48*4, 312-48*2, 360-48*2, 'left'));
     PrisonBreak.saw.push(new Saw6(360+48*12, 312-48*2, 360+48*12, 408+48*12, 312-48*2, 360-48*2, 'left'));
 
-    PrisonBreak.saw.push(new Saw7(360+48*4, 312+48*3))
+    // trap move in motion path
+    PrisonBreak.saw.push(new Saw7_1(360+48*4, 312+48*3, 48, 48*2));
+    PrisonBreak.saw.push(new Saw7_1(360+48*9, 312+48*7, 48*2, 48));
+
+    // trap standing
+    PrisonBreak.saw.push(new Saw7_2(168 + 48, 360 + 48 + 24));
+    PrisonBreak.saw.push(new Saw7_2(168, 360 + 48*3 + 24));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*2 + 24, 360 - 48));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*4, 360 - 48*2 - 24));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*6 + 24, 360 - 48*2));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*8, 360 - 48 + 24));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*2 + 24, 360 + 48*5));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*4, 360 + 48*3 + 24));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*5 + 24, 360 + 48*3));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*7, 360 + 48*4));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*12, 360 + 48*5 + 24));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*12, 360 + 48 + 24));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*13, 360 - 48 + 24));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*14 +24, 360 - 48*2));
+    PrisonBreak.saw.push(new Saw7_2(168 + 48*16, 360 - 48 + 24));
+
+    PrisonBreak.key = [];
+    PrisonBreak.key.push(new Key(383+48*12, 335+48*6));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
+
 
 
     var mapArray = checkLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
@@ -127,12 +151,8 @@ var stage7State = {
 
       PrisonBreak.keyGroup.removeAll(true, false);
       PrisonBreak.key = [];
-      PrisonBreak.key.push(new Key(743 + 48 * 2, 500));
-      PrisonBreak.key.push(new Key(552 + 48 * 2, 500));
-      PrisonBreak.key.push(new Key(166 + 48 * 2, 500));
-      PrisonBreak.key.push(new Key(360 + 48 * 2, 500));
+      PrisonBreak.key.push(new Key(383+48*12, 335+48*6));
       stage7State.player.alive = true;
-
     };
 
 
@@ -152,32 +172,6 @@ var stage7State = {
 
     this.player.sprite.body.onBeginContact.add(playerContact, this);
 
-    // pause_label = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 100, 20, 'Pause', {
-    //   font: '24px Arial',
-    //   fill: '#fff'
-    // });
-    // pause_label.inputEnabled = true;
-    // pause_label.events.onInputUp.add(function() {
-    //   PrisonBreak.game.paused = true;
-    //   clickToContinue = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2, PrisonBreak.configs.GAME_HEIGHT - 150,
-    //     'Click Any Where to Continue', {
-    //       font: '30px Arial',
-    //       fill: '#fff'
-    //     }
-    //   );
-    //   clickToContinue.anchor.setTo(0.5, 0.5);
-    //
-    // });
-    // PrisonBreak.game.input.onDown.add(unpause, self);
-    //
-    // function unpause(event) {
-    //   if (PrisonBreak.game.paused) {
-    //     if (0 < event.x < PrisonBreak.configs.GAME_WIDTH && 0 < event.y < PrisonBreak.configs.GAME_HEIGHT) {
-    //       clickToContinue.destroy();
-    //       PrisonBreak.game.paused = false;
-    //     }
-    //   }
-    // }
 
 
   },
