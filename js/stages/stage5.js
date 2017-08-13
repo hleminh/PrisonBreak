@@ -282,7 +282,7 @@ var stage6State = {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
-          PrisonBreak.game.state.start('win');
+          PrisonBreak.game.state.start('stage7');
         }
       }
     }
