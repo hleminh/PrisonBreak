@@ -22,6 +22,7 @@ var stage1State = {
     wallLayer = map.createLayer('Tile Layer 2', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     startLayer = map.createLayer('Tile Layer 3', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
+    trapLayer = map.createLayer('Tile Layer 6', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
 
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     this.wallLayerTiles = PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
@@ -107,7 +108,17 @@ var stage1State = {
       }
     }
 
-    function fadePlayer() {
+    var mapTrapArray = trapLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
+    this.trapArr = [];
+
+    for (var i = 0; i < mapTrapArray.length; i++) {
+      var myTrapTile = mapTrapArray[i];
+      if (myTrapTile.index == 407) {
+        this.trapArr.push(myTrapTile);
+      }
+    }
+
+    this.fadePlayer = function() {
       PrisonBreak.game.add.tween(stage1State.player.sprite).to({
         alpha: 0
       }, 100, Phaser.Easing.Linear.None, true);
@@ -124,20 +135,14 @@ var stage1State = {
 
     };
 
-
-
-
-
     var playerContact = function(body, bodyB, shapeA, shapeB, equation) {
       if (body) {
         if (this.player.alive) {
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
-            // this.player.sprite.body.x = this.startingX;
-            // this.player.sprite.body.y = this.startingY;
             this.player.alive = false;
             PrisonBreak.sawSound.play();
             PrisonBreak.deathSound.play();
-            fadePlayer();
+            this.fadePlayer();
             PrisonBreak.deathCount++;
             updateDeath(this.deathLabel, PrisonBreak.deathCount);
           }
@@ -147,33 +152,10 @@ var stage1State = {
 
     this.player.sprite.body.onBeginContact.add(playerContact, this);
 
-    // pause_label = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 100, 20, 'Pause', {
-    //   font: '24px Arial',
-    //   fill: '#fff'
-    // });
-    // pause_label.inputEnabled = true;
-    // pause_label.events.onInputUp.add(function() {
-    //   PrisonBreak.game.paused = true;
-    //   clickToContinue = PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2, PrisonBreak.configs.GAME_HEIGHT - 150,
-    //     'Click Any Where to Continue', {
-    //       font: '30px Arial',
-    //       fill: '#fff'
-    //     }
-    //   );
-    //   clickToContinue.anchor.setTo(0.5, 0.5);
-    //
-    // });
-    // PrisonBreak.game.input.onDown.add(unpause, self);
-    //
-    // function unpause(event) {
-    //   if (PrisonBreak.game.paused) {
-    //     if (0 < event.x < PrisonBreak.configs.GAME_WIDTH && 0 < event.y < PrisonBreak.configs.GAME_HEIGHT) {
-    //       clickToContinue.destroy();
-    //       PrisonBreak.game.paused = false;
-    //     }
-    //   }
-    // }
+    this.killTrap = function () {
+      this.sprite.destroy();
 
+    }
 
   },
   update() {
@@ -183,6 +165,22 @@ var stage1State = {
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48) {
           PrisonBreak.game.state.start('stage2');
         }
+      }
+    }
+
+    for (var myTrapTile of this.trapArr) {
+      if (this.player.sprite.body.x > myTrapTile.worldX && this.player.sprite.body.x < myTrapTile.worldX + 48 &&
+        this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
+          if (this.player.alive) {
+          // console.log(PrisonBreak.game.time.totalElapsedSeconds());
+          this.player.alive = false;
+          this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
+          this.fadePlayer();
+          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5 , this.killTrap, this);
+
+        }
+      } else {
+        // PrisonBreak.game.time.reset();
       }
     }
   },

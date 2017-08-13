@@ -16,6 +16,7 @@ var loadState = {
     PrisonBreak.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
     PrisonBreak.game.load.image('player', 'assets/player.png');
+    PrisonBreak.game.load.image('collapse', 'assets/collapse.png');
     PrisonBreak.game.load.image('key', 'assets/key.png');
     PrisonBreak.game.load.image('saw1', 'assets/saws/saw_1.png');
     PrisonBreak.game.load.image('saw2', 'assets/saws/saw_2.png');
