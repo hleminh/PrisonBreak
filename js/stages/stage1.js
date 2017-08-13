@@ -87,16 +87,16 @@ var stage1State = {
     this.contactMaterial.relaxation = 10000;
 
     PrisonBreak.saw = [];
-    PrisonBreak.saw.push(new Saw1(360, 300, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(408, 510, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(456, 300, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(503, 510, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(553, 300, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(600, 510, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(649, 300, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(695, 510, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(743, 300, 310, 500, 300));
-    PrisonBreak.saw.push(new Saw1(793, 510, 310, 500, 300));
+    PrisonBreak.saw.push(new Saw1(360, 300, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(408, 510, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(456, 300, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(503, 510, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(553, 300, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(600, 510, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(649, 300, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(695, 510, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(743, 300, 310, 505, 200));
+    PrisonBreak.saw.push(new Saw1(793, 510, 310, 505, 200));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);

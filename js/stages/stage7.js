@@ -24,7 +24,7 @@ var stage7State = {
     endLayer = map.createLayer('Tile Layer 4', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     checkLayer = map.createLayer('Tile Layer 5', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
     trapLayer = map.createLayer('Tile Layer 6', PrisonBreak.configs.GAME_WIDTH, PrisonBreak.configs.GAME_HEIGHT);
-    
+
 
     map.setCollision([1, 3, 2, 4, 35, 36, 115, 116], true, wallLayer);
     PrisonBreak.game.physics.p2.convertTilemap(map, wallLayer);
@@ -73,7 +73,7 @@ var stage7State = {
       left: Phaser.Keyboard.LEFT,
       right: Phaser.Keyboard.RIGHT,
       player_speed: 180
-    });
+    }, false);
 
     PrisonBreak.game.camera.follow(this.player.sprite);
 
