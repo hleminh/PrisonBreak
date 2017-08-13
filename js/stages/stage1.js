@@ -51,12 +51,20 @@ var stage1State = {
     sfx.inputEnabled = true;
     sfx.events.onInputUp.add(function() {
       if (PrisonBreak.sfxOn) {
-        console.log("sfx toggled off");
         PrisonBreak.sfxOn = false;
+        PrisonBreak.deathSound.mute = true;
+        PrisonBreak.sawSound.mute = true;
+        PrisonBreak.coinSound.mute = true;
+        PrisonBreak.screamSound.mute = true;
+        PrisonBreak.unlockSound.mute = true;
         sfx.loadTexture('sfx_off', 0);
       } else {
-        console.log("sfx toggled on");
         PrisonBreak.sfxOn = true;
+        PrisonBreak.deathSound.mute = false;
+        PrisonBreak.sawSound.mute = false;
+        PrisonBreak.coinSound.mute = false;
+        PrisonBreak.screamSound.mute = false;
+        PrisonBreak.unlockSound.mute = false;
         sfx.loadTexture('sfx_on', 0);
       }
     }, this);
@@ -69,12 +77,10 @@ var stage1State = {
     bgm.inputEnabled = true;
     bgm.events.onInputUp.add(function() {
       if (PrisonBreak.bgmOn) {
-        console.log("bgm toggled off");
         PrisonBreak.bgmOn = false;
         PrisonBreak.backgroundSound.mute = true;
         bgm.loadTexture('bgm_off', 0);
       } else {
-        console.log("bgm toggled on");
         PrisonBreak.bgmOn = true;
         PrisonBreak.backgroundSound.mute = false;
         bgm.loadTexture('bgm_on', 0);

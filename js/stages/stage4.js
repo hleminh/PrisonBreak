@@ -48,6 +48,50 @@ var stage4State = {
       PrisonBreak.game.state.start('menu');
     }, this);
 
+    if (PrisonBreak.sfxOn) {
+      var sfx = PrisonBreak.game.add.sprite(100, PrisonBreak.configs.GAME_HEIGHT - 42, 'sfx_on');
+    } else {
+      var sfx = PrisonBreak.game.add.sprite(100, PrisonBreak.configs.GAME_HEIGHT - 42, 'sfx_off');
+    }
+    sfx.inputEnabled = true;
+    sfx.events.onInputUp.add(function() {
+      if (PrisonBreak.sfxOn) {
+        PrisonBreak.sfxOn = false;
+        PrisonBreak.deathSound.mute = true;
+        PrisonBreak.sawSound.mute = true;
+        PrisonBreak.coinSound.mute = true;
+        PrisonBreak.screamSound.mute = true;
+        PrisonBreak.unlockSound.mute = true;
+        sfx.loadTexture('sfx_off', 0);
+      } else {
+        PrisonBreak.sfxOn = true;
+        PrisonBreak.deathSound.mute = false;
+        PrisonBreak.sawSound.mute = false;
+        PrisonBreak.coinSound.mute = false;
+        PrisonBreak.screamSound.mute = false;
+        PrisonBreak.unlockSound.mute = false;
+        sfx.loadTexture('sfx_on', 0);
+      }
+    }, this);
+
+    if (PrisonBreak.bgmOn) {
+      var bgm = PrisonBreak.game.add.sprite(100 + 50, PrisonBreak.configs.GAME_HEIGHT - 42, 'bgm_on');
+    } else {
+      var bgm = PrisonBreak.game.add.sprite(100 + 50, PrisonBreak.configs.GAME_HEIGHT - 42, 'bgm_off');
+    }
+    bgm.inputEnabled = true;
+    bgm.events.onInputUp.add(function() {
+      if (PrisonBreak.bgmOn) {
+        PrisonBreak.bgmOn = false;
+        PrisonBreak.backgroundSound.mute = true;
+        bgm.loadTexture('bgm_off', 0);
+      } else {
+        PrisonBreak.bgmOn = true;
+        PrisonBreak.backgroundSound.mute = false;
+        bgm.loadTexture('bgm_on', 0);
+      }
+    }, this);
+
     PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 18, 'DEATHS: ', {
       font: '24px Arial',
       fill: '#fff'
@@ -224,7 +268,7 @@ var stage4State = {
         if (this.player.alive) {
           this.player.alive = false;
           PrisonBreak.screamSound.play();
-          
+
           this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
           this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
           this.emitter.on = true;

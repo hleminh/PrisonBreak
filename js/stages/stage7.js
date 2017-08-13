@@ -1,4 +1,4 @@
-var stage7State = {
+var stage5State = {
   preload: function() {
     PrisonBreak.game.load.tilemap('stage7', 'assets/stages/stage7.json', null, Phaser.Tilemap.TILED_JSON);
     PrisonBreak.game.load.image('tiles', 'assets/tiles.png');
@@ -50,12 +50,56 @@ var stage7State = {
       PrisonBreak.game.state.start('menu');
     }, this);
 
+    if (PrisonBreak.sfxOn) {
+      var sfx = PrisonBreak.game.add.sprite(100, PrisonBreak.configs.GAME_HEIGHT - 42, 'sfx_on');
+    } else {
+      var sfx = PrisonBreak.game.add.sprite(100, PrisonBreak.configs.GAME_HEIGHT - 42, 'sfx_off');
+    }
+    sfx.inputEnabled = true;
+    sfx.events.onInputUp.add(function() {
+      if (PrisonBreak.sfxOn) {
+        PrisonBreak.sfxOn = false;
+        PrisonBreak.deathSound.mute = true;
+        PrisonBreak.sawSound.mute = true;
+        PrisonBreak.coinSound.mute = true;
+        PrisonBreak.screamSound.mute = true;
+        PrisonBreak.unlockSound.mute = true;
+        sfx.loadTexture('sfx_off', 0);
+      } else {
+        PrisonBreak.sfxOn = true;
+        PrisonBreak.deathSound.mute = false;
+        PrisonBreak.sawSound.mute = false;
+        PrisonBreak.coinSound.mute = false;
+        PrisonBreak.screamSound.mute = false;
+        PrisonBreak.unlockSound.mute = false;
+        sfx.loadTexture('sfx_on', 0);
+      }
+    }, this);
+
+    if (PrisonBreak.bgmOn) {
+      var bgm = PrisonBreak.game.add.sprite(100 + 50, PrisonBreak.configs.GAME_HEIGHT - 42, 'bgm_on');
+    } else {
+      var bgm = PrisonBreak.game.add.sprite(100 + 50, PrisonBreak.configs.GAME_HEIGHT - 42, 'bgm_off');
+    }
+    bgm.inputEnabled = true;
+    bgm.events.onInputUp.add(function() {
+      if (PrisonBreak.bgmOn) {
+        PrisonBreak.bgmOn = false;
+        PrisonBreak.backgroundSound.mute = true;
+        bgm.loadTexture('bgm_off', 0);
+      } else {
+        PrisonBreak.bgmOn = true;
+        PrisonBreak.backgroundSound.mute = false;
+        bgm.loadTexture('bgm_on', 0);
+      }
+    }, this);
+
     PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH - 200, 18, 'DEATHS: ', {
       font: '24px Arial',
       fill: '#fff'
     });
 
-    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 7', {
+    PrisonBreak.game.add.text(PrisonBreak.configs.GAME_WIDTH / 2 - 45, 18, 'STAGE 5', {
       font: '24px Arial',
       fill: '#fff'
     });
@@ -161,16 +205,16 @@ var stage7State = {
     }
 
     this.fadePlayer = function() {
-      PrisonBreak.game.add.tween(stage7State.player.sprite).to({
+      PrisonBreak.game.add.tween(stage5State.player.sprite).to({
         alpha: 0
       }, 100, Phaser.Easing.Linear.None, true);
       PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, rePosition, this);
     };
 
     function rePosition() {
-      stage7State.player.sprite.body.x = stage7State.startingX;
-      stage7State.player.sprite.body.y = stage7State.startingY;
-      PrisonBreak.game.add.tween(stage7State.player.sprite).to({
+      stage5State.player.sprite.body.x = stage5State.startingX;
+      stage5State.player.sprite.body.y = stage5State.startingY;
+      PrisonBreak.game.add.tween(stage5State.player.sprite).to({
         alpha: 1
       }, 100, Phaser.Easing.Linear.None, true);
 
@@ -180,7 +224,7 @@ var stage7State = {
       PrisonBreak.key.push(new Key(408 + 48 * 12, 358 + 48 * 6));
       PrisonBreak.key.push(new Key(360 + 48 * 12, 358 + 48 * 6));
       PrisonBreak.key.push(new Key(360 + 48 * 5 , 358 - 48 * 3 ));
-      stage7State.player.alive = true;
+      stage5State.player.alive = true;
       this.emitter.on = false;
     };
 
@@ -233,7 +277,7 @@ var stage7State = {
       for (var myEndTile of this.endArr) {
         if (this.player.sprite.body.x > myEndTile.worldX && this.player.sprite.body.x < myEndTile.worldX + 48 &&
           this.player.sprite.body.y > myEndTile.worldY && this.player.sprite.body.y < myEndTile.worldY + 48 && this.player.alive) {
-          PrisonBreak.game.state.start('win');
+          PrisonBreak.game.state.start('stage6');
         }
       }
     }
