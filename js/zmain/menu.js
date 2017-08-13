@@ -84,7 +84,7 @@ var menuState = {
 
   },
   fadeComplete: function () {
-    PrisonBreak.game.state.start('stage1');
+    PrisonBreak.game.state.start('win');
     if (! PrisonBreak.backgroundSound.isPlaying) {
       PrisonBreak.backgroundSound.play();
     }
