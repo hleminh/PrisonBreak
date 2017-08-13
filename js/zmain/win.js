@@ -2,11 +2,12 @@ var winState = {
   create: function() {
     this.done = false;
     PrisonBreak.game.stage.backgroundColor = '#00000';
-    PrisonBreak.player = PrisonBreak.game.add.sprite(250, PrisonBreak.configs.GAME_HEIGHT - 90, 'player');
+    PrisonBreak.player = PrisonBreak.game.add.sprite(250, PrisonBreak.configs.GAME_HEIGHT - 61, 'player');
     PrisonBreak.player.scale.setTo(2, 2);
     PrisonBreak.prison = PrisonBreak.game.add.sprite(576, 407.8, 'prisonHouse');
     PrisonBreak.prison.anchor = new Phaser.Point(0.5, 0.5);
     PrisonBreak.game.physics.p2.enable(PrisonBreak.player);
+    PrisonBreak.player.body.kinematic = true;
     PrisonBreak.player.body.velocity.x = 400;
 
   },
