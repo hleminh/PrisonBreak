@@ -39,6 +39,10 @@ var loadState = {
     PrisonBreak.game.load.image('blood3', 'assets/blood/blood3.png');
     PrisonBreak.game.load.image('blood4', 'assets/blood/blood4.png');
     PrisonBreak.game.load.image('blood5', 'assets/blood/blood5.png');
+    PrisonBreak.game.load.image('sfx_on', 'assets/sfx_on.png');
+    PrisonBreak.game.load.image('sfx_off', 'assets/sfx_off.png');
+    PrisonBreak.game.load.image('bgm_on', 'assets/bgm_on.png');
+    PrisonBreak.game.load.image('bgm_on', 'assets/bgm_off.png');
 
   },
 
@@ -52,5 +56,7 @@ var loadState = {
     PrisonBreak.backgroundSound.loop = true;
     PrisonBreak.backgroundSound.volume = 0.3;
     PrisonBreak.game.state.start('menu');
+    PrisonBreak.backgroundSoundEnabled = true;
+    PrisonBreak.soundfxEnabled = true;
   }
 };
