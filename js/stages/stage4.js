@@ -158,6 +158,7 @@ var stage4State = {
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
             this.player.alive = false;
+
             this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
             this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
             this.emitter.on = true;
@@ -222,6 +223,8 @@ var stage4State = {
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
         if (this.player.alive) {
           this.player.alive = false;
+          PrisonBreak.screamSound.play();
+          
           this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
           this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
           this.emitter.on = true;

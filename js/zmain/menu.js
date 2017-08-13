@@ -29,6 +29,7 @@ var menuState = {
   },
   start: function() {
     PrisonBreak.background.loadTexture('background_unlock', 0, false);
+    PrisonBreak.unlockSound.play();
     move = false;
     // this.fadePlayer = function() {
       PrisonBreak.game.add.tween(PrisonBreak.player).to({

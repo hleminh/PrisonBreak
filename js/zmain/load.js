@@ -31,6 +31,8 @@ var loadState = {
     PrisonBreak.game.load.audio('saw','assets/sound/Item_13.wav');
     PrisonBreak.game.load.audio('coin','assets/sound/Coins.wav');
     PrisonBreak.game.load.audio('background','assets/sound/background.ogg');
+    PrisonBreak.game.load.audio('scream','assets/sound/scream.ogg');
+    PrisonBreak.game.load.audio('unlock','assets/sound/Unlock.wav');
     PrisonBreak.game.load.image('blood1', 'assets/blood/blood1.png');
     PrisonBreak.game.load.image('blood2', 'assets/blood/blood2.png');
     PrisonBreak.game.load.image('blood3', 'assets/blood/blood3.png');
@@ -44,6 +46,8 @@ var loadState = {
     PrisonBreak.sawSound = PrisonBreak.game.add.audio('saw');
     PrisonBreak.coinSound = PrisonBreak.game.add.audio('coin');
     PrisonBreak.backgroundSound = PrisonBreak.game.add.audio('background');
+    PrisonBreak.screamSound = PrisonBreak.game.add.audio('scream');
+    PrisonBreak.unlockSound = PrisonBreak.game.add.audio('unlock');
     PrisonBreak.backgroundSound.loop = true;
     PrisonBreak.backgroundSound.volume = 0.3;
     PrisonBreak.game.state.start('menu');

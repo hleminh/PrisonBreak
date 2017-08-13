@@ -221,6 +221,8 @@ var stage2State = {
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
         if (this.player.alive) {
           this.player.alive = false;
+          PrisonBreak.screamSound.play();
+          
           this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
           this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
           this.emitter.on = true;
