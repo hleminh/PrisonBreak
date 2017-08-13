@@ -66,8 +66,9 @@ var stage1State = {
       down: Phaser.Keyboard.DOWN,
       left: Phaser.Keyboard.LEFT,
       right: Phaser.Keyboard.RIGHT,
-      player_speed: 180
-    });
+      player_speed: 180},
+      true
+      );
 
     this.wallMaterial = PrisonBreak.game.physics.p2.createMaterial('wallMaterial');
     this.spriteMaterial = PrisonBreak.game.physics.p2.createMaterial('spriteMaterial');
@@ -94,8 +95,9 @@ var stage1State = {
     PrisonBreak.saw.push(new Saw1(743, 300, 310, 500, 300));
     PrisonBreak.saw.push(new Saw1(793, 510, 310, 500, 300));
 
-    PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
+
 
     var mapEndArray = endLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
     this.endArr = [];
