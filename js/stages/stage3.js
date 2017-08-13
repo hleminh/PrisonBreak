@@ -32,6 +32,7 @@ var stage3State = {
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.keyTrapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
 
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
@@ -98,10 +99,12 @@ var stage3State = {
     PrisonBreak.key.push(new Key(216, 310));
     PrisonBreak.key.push(new Key(216, 360));
     PrisonBreak.key.push(new Key(935, 310));
-    PrisonBreak.key.push(new Key(985, 310));
+    // PrisonBreak.key.push(new Key(985, 310));
     PrisonBreak.key.push(new Key(985, 360));
     PrisonBreak.key.push(new Key(935, 360));
 
+    PrisonBreak.keyTrap = [];
+    PrisonBreak.keyTrap.push(new KeyTrap(985, 310));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
@@ -142,7 +145,7 @@ var stage3State = {
       PrisonBreak.key.push(new Key(216, 310));
       PrisonBreak.key.push(new Key(216, 360));
       PrisonBreak.key.push(new Key(935, 310));
-      PrisonBreak.key.push(new Key(985, 310));
+      // PrisonBreak.key.push(new Key(985, 310));
       PrisonBreak.key.push(new Key(985, 360));
       PrisonBreak.key.push(new Key(935, 360));
       stage3State.player.alive = true;
@@ -155,6 +158,15 @@ var stage3State = {
           if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
             PrisonBreak.coinSound.play();
             body.sprite.destroy();
+          }
+          if (PrisonBreak.keyTrapGroup.children.indexOf(body.sprite) > -1){
+            body.sprite.loadTexture('saw_evil', 0, false);
+            this.player.alive.false;
+            PrisonBreak.sawSound.play();
+            PrisonBreak.deathSound.play();
+            fadePlayer();
+            PrisonBreak.deathCount++;
+            updateDeath(this.deathLabel, PrisonBreak.deathCount);
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
             this.player.alive = false;

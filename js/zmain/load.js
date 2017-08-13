@@ -24,6 +24,7 @@ var loadState = {
     PrisonBreak.game.load.image('saw4', 'assets/saws/saw_4.png');
     PrisonBreak.game.load.image('saw5', 'assets/saws/saw_5.png');
     PrisonBreak.game.load.image('saw6', 'assets/saws/saw_6.png');
+    PrisonBreak.game.load.image('saw_evil', 'assets/saws/saw_evil.png')
     PrisonBreak.game.load.audio('death','assets/sound/Player_Hit_1.wav');
     PrisonBreak.game.load.audio('saw','assets/sound/Item_13.wav');
     PrisonBreak.game.load.audio('coin','assets/sound/Coins.wav');

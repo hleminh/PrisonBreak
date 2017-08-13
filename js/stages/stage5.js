@@ -9,6 +9,8 @@ var stage6State = {
     }
     this.startingX = 180;
     this.startingY = 200;
+    // this.startingX = 850;
+    // this.startingY = 400;
 
     // PrisonBreak.game.physics.p2.setImpactEvents(true);
     PrisonBreak.game.physics.p2.restitution = 0.0;
@@ -33,6 +35,7 @@ var stage6State = {
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.keyTrapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
 
 
     var menu = PrisonBreak.game.add.text(100, 18, 'MENU', {
@@ -172,13 +175,17 @@ var stage6State = {
     PrisonBreak.key = [];
     PrisonBreak.key.push(new Key(743 + 48 * 2, 500));
     PrisonBreak.key.push(new Key(552 + 48 * 2, 500));
-    PrisonBreak.key.push(new Key(166 + 48 * 2, 500));
+    // PrisonBreak.key.push(new Key(166 + 48 * 2, 500));
     PrisonBreak.key.push(new Key(360 + 48 * 2, 500));
+
+    PrisonBreak.keyTrap = [];
+    PrisonBreak.keyTrap.push(new KeyTrap(166 + 48 * 2, 500));
 
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.keyGroup);
+    PrisonBreak.game.world.bringToTop(PrisonBreak.keyTrapGroup);
 
 
     var mapArray = checkLayer.getTiles(0, 0, PrisonBreak.game.world.width, PrisonBreak.game.world.height);
@@ -219,7 +226,7 @@ var stage6State = {
       PrisonBreak.key = [];
       PrisonBreak.key.push(new Key(743 + 48 * 2, 500));
       PrisonBreak.key.push(new Key(552 + 48 * 2, 500));
-      PrisonBreak.key.push(new Key(166 + 48 * 2, 500));
+      // PrisonBreak.key.push(new Key(166 + 48 * 2, 500));
       PrisonBreak.key.push(new Key(360 + 48 * 2, 500));
       stage6State.player.alive = true;
 
@@ -232,7 +239,15 @@ var stage6State = {
           if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
             body.sprite.destroy();
             PrisonBreak.coinSound.play();
-
+          }
+          if (PrisonBreak.keyTrapGroup.children.indexOf(body.sprite) > -1){
+            body.sprite.loadTexture('saw_evil', 0, false);
+            this.player.alive.false;
+            PrisonBreak.sawSound.play();
+            PrisonBreak.deathSound.play();
+            fadePlayer();
+            PrisonBreak.deathCount++;
+            updateDeath(this.deathLabel, PrisonBreak.deathCount);
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
             this.player.alive = false;
