@@ -35,6 +35,7 @@ var stage7State = {
     PrisonBreak.playerGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.trapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.keyGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
+    PrisonBreak.keyTrapGroup = PrisonBreak.game.add.physicsGroup(Phaser.Physics.P2JS);
     PrisonBreak.lightGroup = PrisonBreak.game.add.group();
 
 
@@ -113,8 +114,16 @@ var stage7State = {
     PrisonBreak.saw.push(new Saw7_2(168 + 48 * 14 + 24, 360 - 48 * 2));
     PrisonBreak.saw.push(new Saw7_2(168 + 48 * 16, 360 - 48 + 24));
 
+
     PrisonBreak.key = [];
-    PrisonBreak.key.push(new Key(383 + 48 * 12, 335 + 48 * 6));
+    PrisonBreak.key.push(new Key(360 + 48 * 12, 310 + 48 * 6));
+    PrisonBreak.key.push(new Key(408 + 48 * 12, 358 + 48 * 6));
+    PrisonBreak.key.push(new Key(360 + 48 * 12, 358 + 48 * 6));
+    PrisonBreak.key.push(new Key(360 + 48 * 5 , 358 - 48 * 3 ));
+
+    PrisonBreak.keyTrap = [];
+    PrisonBreak.keyTrap.push(new KeyTrap(408 + 48 * 12, 310 + 48 * 6));
+    PrisonBreak.keyTrap.push(new KeyTrap(360 - 48 * 4, 358 + 48 * 6));
 
     PrisonBreak.game.world.bringToTop(PrisonBreak.playerGroup);
     PrisonBreak.game.world.bringToTop(PrisonBreak.trapGroup);
@@ -167,7 +176,10 @@ var stage7State = {
 
       PrisonBreak.keyGroup.removeAll(true, false);
       PrisonBreak.key = [];
-      PrisonBreak.key.push(new Key(383 + 48 * 12, 335 + 48 * 6));
+      PrisonBreak.key.push(new Key(360 + 48 * 12, 310 + 48 * 6));
+      PrisonBreak.key.push(new Key(408 + 48 * 12, 358 + 48 * 6));
+      PrisonBreak.key.push(new Key(360 + 48 * 12, 358 + 48 * 6));
+      PrisonBreak.key.push(new Key(360 + 48 * 5 , 358 - 48 * 3 ));
       stage7State.player.alive = true;
       this.emitter.on = false;
     };
@@ -179,6 +191,19 @@ var stage7State = {
           if (PrisonBreak.keyGroup.children.indexOf(body.sprite) > -1) {
             body.sprite.destroy();
             PrisonBreak.coinSound.play();
+          }
+          if (PrisonBreak.keyTrapGroup.children.indexOf(body.sprite) > -1){
+            body.sprite.loadTexture('saw_evil', 0, false);
+            this.player.alive = false;
+            this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
+            this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
+            this.emitter.on = true;
+            this.emitter.start(true, 500, 20);
+            PrisonBreak.sawSound.play();
+            PrisonBreak.deathSound.play();
+            this.fadePlayer();
+            PrisonBreak.deathCount++;
+            updateDeath(this.deathLabel, PrisonBreak.deathCount);
           }
           if (PrisonBreak.trapGroup.children.indexOf(body.sprite) > -1) { //trapGroup contains body's sprite
             this.player.alive = false;
@@ -198,7 +223,7 @@ var stage7State = {
 
     this.player.sprite.body.onBeginContact.add(playerContact, this);
 
-    this.killTrap = function () {
+    this.killTrap = function() {
       this.sprite.destroy();
     }
 
@@ -224,7 +249,7 @@ var stage7State = {
     for (var myTrapTile of this.trapArr) {
       if (this.player.sprite.body.x > myTrapTile.worldX && this.player.sprite.body.x < myTrapTile.worldX + 48 &&
         this.player.sprite.body.y > myTrapTile.worldY && this.player.sprite.body.y < myTrapTile.worldY + 48) {
-          if (this.player.alive) {
+        if (this.player.alive) {
           this.player.alive = false;
           this.emitter = PrisonBreak.game.add.emitter(this.player.sprite.x, this.player.sprite.y, 4);
           this.emitter.makeParticles(['blood1', 'blood2', 'blood3', 'blood4', 'blood5']);
@@ -232,7 +257,7 @@ var stage7State = {
           this.emitter.start(true, 500, 20);
           this.sprite = PrisonBreak.game.add.sprite(myTrapTile.worldX, myTrapTile.worldY, 'collapse');
           this.fadePlayer();
-          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5 , this.killTrap, this);
+          PrisonBreak.game.time.events.add(Phaser.Timer.SECOND * 0.5, this.killTrap, this);
         }
       }
     }
