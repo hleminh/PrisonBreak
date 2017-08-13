@@ -1,5 +1,6 @@
 var menuLevelState = {
   create: function(){
+    PrisonBreak.game.stage.backgroundColor = '#000000';
     var levelLable = PrisonBreak.game.add.text(150, 80, 'Select level which you want to play !',{
       font: '40px Arial',
       fill: '#fff'
